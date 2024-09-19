@@ -1,0 +1,4 @@
+A group of students is playing a sorting game with colored marbles. 
+There are three colors of marbles: red (0), blue (1), and green (2). 
+The marbles are scattered on the ground in random order, and the task is to help them arrange the marbles in such a way that all the red marbles come first, 
+followed by the blue marbles, and then the green marbles.
