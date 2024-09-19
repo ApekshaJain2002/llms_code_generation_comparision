@@ -1,0 +1,5 @@
+Imagine you’re a detective solving a mystery where two secret codes have been mixed up. You suspect that the two codes might be anagrams of each other. An anagram is a code that contains exactly the same letters as another code, but possibly in a different order.
+
+For example, you have two secret codes: "listen" and "silent". Your job is to check if these two codes are anagrams of each other by comparing their letters.
+
+Can you help solve the mystery by determining if the two codes are anagrams of each other, ensuring they contain the exact same letters?
