@@ -1,0 +1,3 @@
+There are five children at a park, and each one has a basket filled with balls. 
+However, some baskets have no balls at all! The children need to line up in such a way that the baskets with no balls are all moved to the back, 
+while the baskets with balls remain at the front in the same order they were initially.
