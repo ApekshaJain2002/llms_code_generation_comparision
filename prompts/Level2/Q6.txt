@@ -1,0 +1,3 @@
+A group of wizards are casting a powerful spell. However, 
+in order for the spell to work, the words of the spell need to be spoken in reverse order! 
+The words are currently in the wrong sequence, and they need your help to reverse them before the magic can take effect.
