@@ -1,0 +1,5 @@
+Imagine you’re a wizard trying to cast a powerful spell. The spell requires you to calculate the strength of a magical potion by raising a base amount of magic (x) to a certain power (n).
+
+For example, if you have a magical base strength of 2.5 and you need to raise it to the power of 3, you need to determine the final strength of the potion after applying the spell.
+
+Can you help the wizard by calculating the final strength of the potion ?
