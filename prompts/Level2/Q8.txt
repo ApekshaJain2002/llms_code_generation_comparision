@@ -1,0 +1,9 @@
+In a large company, there is a single meeting room available, and several teams have meetings scheduled. Each team has a specific start and end time for their meeting, but only one meeting can take place in the room at any given time. The task is to help the company maximize the number of meetings that can be held without overlapping times, while also determining the order in which the meetings should happen.
+
+Given the start times and end times of meetings, can you help the company figure out the maximum number of meetings they can host and the order in which the meetings should be held?
+
+For example:
+
+Start times: [1, 3, 0, 5, 8, 5]
+End times: [2, 4, 6, 7, 9, 9]
+Help the company organize their meetings to make the best use of the room!
