@@ -1,0 +1,5 @@
+Imagine you’re in a game where you’re counting the longest streak of magical spells that worked perfectly. Each spell is represented by either a success (1) or a failure (0). Your task is to find the longest continuous streak of successful spells (1s) that happened in a row.
+
+For example, if the sequence of spell results is [1, 0, 1, 1, 0, 1, 1, 1], you need to determine the length of the longest consecutive streak of successful spells.
+
+Can you help find the longest sequence of consecutive successes to determine the most impressive streak of magical spells?
