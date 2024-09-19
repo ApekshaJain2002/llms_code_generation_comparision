@@ -1,0 +1,7 @@
+In a small village, there’s a row of houses arranged in a circular pattern. Each house has a certain amount of money, but there’s a catch: if the thief robs two adjacent houses, the village's alarm system will go off, alerting the police.
+
+The thief wants to rob as much money as possible without triggering the alarm. The houses are arranged in a circle, so the first and last houses are next to each other.
+
+For example, if the houses have the following amounts of money: [2, 3, 2], the thief needs to figure out the maximum amount of money they can rob without ever robbing two adjacent houses, considering that the first and last houses are also considered adjacent.
+
+Can you help the thief determine the best strategy to maximize the amount of money robbed while avoiding any alarm triggers?
