@@ -1,0 +1,7 @@
+Imagine you're exploring an ancient treasure map where each segment of the map has a treasure value, and some segments may even have negative values (like traps). Your goal is to find the most valuable contiguous segment of the map that gives the highest total treasure value, ensuring that you collect as much treasure as possible from one continuous stretch of the map.
+
+You have a map where each segment has the following values: [3, -2, 5, -1, 4, -3, 2, 1]. You need to determine the segment of the map with the highest total treasure value.
+
+For example, if the segment [3, -2, 5, -1, 4] has the maximum total treasure value, you should be able to calculate and identify this segment as the most valuable.
+
+Can you help find the most valuable segment of the map and determine its total treasure value?
