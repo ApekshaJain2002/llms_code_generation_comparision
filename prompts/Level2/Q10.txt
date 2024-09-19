@@ -1,0 +1,8 @@
+In a small village, there’s a basket filled with fresh and rotten oranges. However, there's a strange curse—every minute, if a fresh orange is next to a rotten orange, it also turns rotten. The villagers want to know how long it will take for all the oranges to become rotten, or if it's even possible to rot all of them.
+
+The basket is represented as a grid where:
+
+2 means the orange is already rotten,
+1 means the orange is fresh, and
+0 means the cell is empty with no oranges.
+Can you help the villagers figure out the minimum time required for all the fresh oranges to rot, or determine if it's impossible?
