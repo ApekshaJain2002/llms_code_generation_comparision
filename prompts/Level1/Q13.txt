@@ -1,0 +1,2 @@
+You are given an array Arr where each element represents a value. The array is arranged in a circular manner, meaning the first and last elements are adjacent. You cannot select two consecutive elements.
+Return the maximum sum of non-adjacent elements from the array.

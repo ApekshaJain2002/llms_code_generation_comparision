@@ -1,0 +1,2 @@
+The weight of N items and their corresponding values are given. We have to put these items in a knapsack of weight W such that the total value obtained is maximized.
+Note: We can either take the item as a whole or break it into smaller units.

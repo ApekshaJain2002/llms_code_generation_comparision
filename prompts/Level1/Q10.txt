@@ -1,0 +1,6 @@
+You are given an m x n grid where:
+2 represents a decayed element,
+1 represents a healthy element,
+0 represents an empty cell.
+Every minute, a healthy element adjacent (up, down, left, or right) to a decayed element becomes decayed.
+Return the minimum number of minutes required to decay all the healthy elements. If it's not possible to decay all of them, return -1.
