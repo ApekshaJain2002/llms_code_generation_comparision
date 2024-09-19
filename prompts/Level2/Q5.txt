@@ -1,0 +1,3 @@
+In a mountain range, each mountain has a certain height, and you are tasked with finding one of the peaks.
+A peak is defined as a mountain that is taller than the mountains on both its left and right. 
+The first and last mountains can also be peaks, as there are no mountains beyond them.
