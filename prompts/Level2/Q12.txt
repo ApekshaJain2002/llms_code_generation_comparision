@@ -1,0 +1,9 @@
+Imagine you’re a brave adventurer who has reached the base of a magical staircase. Each stair is enchanted and allows you to climb either one stair or two stairs at a time. Your quest is to figure out how many different ways you can reach the top of the staircase from the bottom.
+
+Here’s the scenario:
+
+You start at the 0th stair and need to reach the Nth stair.
+For each step, you can either take a single step up or a double step up.
+For example, if there are 4 stairs, you need to calculate how many distinct paths you can take to reach the 4th stair using steps of one or two stairs.
+
+Can you help the adventurer find all the different ways to climb the stairs and reach the top of the magical staircase?
