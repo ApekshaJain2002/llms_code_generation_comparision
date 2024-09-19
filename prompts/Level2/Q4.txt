@@ -1,0 +1,3 @@
+A young entrepreneur, Rohan, is monitoring the prices of a rare gem that changes daily. 
+He wants to buy the gem at the lowest possible price and sell it later at a higher price to maximize his profit. 
+However, Rohan can only buy the gem on one day and sell it on a future day.
