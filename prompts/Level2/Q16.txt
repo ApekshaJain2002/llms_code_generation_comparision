@@ -1,0 +1,7 @@
+Imagine you're at a treasure hunt in an ancient castle. The castle has a special chest that holds exactly N treasures, each with a unique number between 1 and N. However, during the hunt, one treasure went missing, and you only found N-1 treasures.
+
+You have a list of the treasures you found, but one treasure number is missing. Your task is to figure out which treasure number is missing from the list so you can complete the treasure hunt and unlock the chest.
+
+For example, if there are 5 treasures in total and you found treasures numbered [1, 2, 3, 5], which treasure number between 1 and 5 is missing?
+
+Can you help identify the missing treasure number so the treasure hunt can be completed?
