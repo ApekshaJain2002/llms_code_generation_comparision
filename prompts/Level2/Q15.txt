@@ -1,0 +1,12 @@
+Imagine you're organizing a grand party with a diverse range of guests, and each guest has a unique name tag. After the party, you want to tally how many guests had each name tag to see which names were the most popular.
+
+Here’s the list of name tags (elements) from the party: [Alice, Bob, Alice, Charlie, Bob, Alice].
+
+Can you count how many times each name tag appeared so you can make a list of the most common names?
+
+In this case, you would need to determine the frequency of each name tag, such as:
+
+Alice: 3 times
+Bob: 2 times
+Charlie: 1 time
+Help organize the guest list and count the frequency of each name tag from the party!
