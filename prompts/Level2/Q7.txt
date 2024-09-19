@@ -1,0 +1,6 @@
+A group of adventurers are exploring a magical forest, where the paths between trees are connected in strange ways. 
+Some paths loop back, trapping anyone who walks in circles. 
+The adventurers want to know if the path they are following leads them back to a tree they've already visited, creating a cycle. 
+If there's no cycle, they can keep exploring safely.
+Imagine the forest as a series of connected trees, where each tree points to the next. 
+Can you help the adventurers figure out if their current path leads them in a circle (cycle) or if it's safe to continue?
