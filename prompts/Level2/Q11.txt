@@ -1,0 +1,9 @@
+In a large archipelago, there are several islands surrounded by the sea. Each island is made up of land cells, and the sea cells are the water surrounding them. The goal is to find out how many land cells are completely surrounded by the sea and cannot reach the edge of the archipelago.
+
+Imagine a map where:
+
+0 represents sea,
+1 represents land.
+You can move from one land cell to another if they are adjacent (up, down, left, or right). If a land cell is on the boundary of the map, it can eventually reach the edge of the archipelago.
+
+Given a map of the archipelago, can you determine the number of land cells that are completely surrounded by sea and cannot walk to the edge of the map?
