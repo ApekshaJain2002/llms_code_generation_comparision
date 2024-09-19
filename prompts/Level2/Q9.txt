@@ -1,0 +1,10 @@
+A treasure hunter has stumbled upon a mysterious cave filled with valuable gems and artifacts. Each item in the cave has a specific weight and value, but the treasure hunter has a limited-capacity knapsack, which can only hold a certain weight. The twist is that the hunter can take an item in whole or even break it into smaller pieces to maximize the total value of the treasure they can carry.
+
+Given the weights and values of the items, along with the capacity of the knapsack, can you help the treasure hunter decide which items to take (or how to break them) in order to get the maximum treasure value?
+
+For example:
+
+Weights of items: [2, 3, 5, 7]
+Values of items: [10, 5, 15, 7]
+Knapsack capacity: 8
+Help the treasure hunter make the most out of their adventure by using a greedy strategy to pick the most valuable items!
