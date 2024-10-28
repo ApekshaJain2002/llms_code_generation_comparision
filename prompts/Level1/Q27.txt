@@ -1,0 +1,2 @@
+Given a set of forces acting on a body at the coordinates (0, 0, 0), determine if the body is in equilibrium. 
+The body is in equilibrium if the sum of all force vectors in the x, y, and z directions is equal to zero.
