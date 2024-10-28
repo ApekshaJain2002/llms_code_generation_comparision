@@ -1,0 +1,5 @@
+Given a word, determine if it is a "mirror" word. A word is considered a mirror word if:
+
+It reads the same forwards and backwards.
+It only contains letters that look the same when reflected in a mirror. The valid letters are: A, H, I, M, O, T, U, V, W, X, Y.
+Output "YES" if the word is a mirror word, otherwise "NO".
