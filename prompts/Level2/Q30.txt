@@ -1,0 +1,8 @@
+In the vibrant town of Numeria, there lived a renowned artist named Aria. She was famous for her mesmerizing sculptures, each crafted from colorful stones collected from the nearby hills. One day, she decided to create a breathtaking installation that would showcase the beauty of her favorite stones.
+
+Aria gathered n stones of various colors and sizes, placing them in a beautiful array. However, as she stepped back to admire her work, she noticed that the stones were not arranged in a way that highlighted their uniqueness. Some stones were larger than others, and their sizes were not in order, which diminished the overall effect she wanted to create.
+
+Determined to showcase the stones' beauty, Aria thought about rearranging them. She knew that if she could arrange the stones in a strictly increasing order of size, each stone would shine brighter beside the next. She pondered whether it was possible to achieve this desired arrangement with the stones she had gathered.
+
+With a heart full of hope, Aria wondered: Could she rearrange the stones to create a stunning display, where each stone was smaller than the one that followed?
+
