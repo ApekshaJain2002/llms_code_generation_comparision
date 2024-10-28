@@ -1,0 +1,3 @@
+Write a program that reads a single word consisting of both uppercase and lowercase letters. 
+The program should convert the word to all lowercase if there are more or an equal number of lowercase letters compared to uppercase letters. 
+Otherwise, it should convert the word to all uppercase.
