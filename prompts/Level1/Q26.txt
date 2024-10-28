@@ -1,0 +1,4 @@
+Given n sticks with positive integer lengths 
+a1,a2...an, determine the minimum number of operations required to make it possible to select three sticks that can form an equilateral triangle. In each operation, you may increase or decrease the length of any stick by 1. Each stick must have a positive length at all times.
+
+An equilateral triangle requires all three sides to be of equal length. Output the minimum number of operations needed to achieve this condition.
