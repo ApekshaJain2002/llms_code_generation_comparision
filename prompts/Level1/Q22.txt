@@ -1,0 +1,1 @@
+Given two fractions a/b and c/d, find the minimum number of operations needed to make them equal in value. An operation allows you to multiply the numerator or denominator of either fraction by any integer (other than zero for denominators).
