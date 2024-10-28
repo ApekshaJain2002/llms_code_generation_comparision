@@ -1,0 +1,4 @@
+Burenka came to kindergarden. This kindergarten is quite strange, so each kid there receives two fractions a/b and c/d
+with integer numerators and denominators. Then children are commanded to play with their fractions.
+Burenka is a clever kid, so she noticed that when she claps once, she can multiply numerator or denominator of one of her two fractions by any integer of her choice (but she can't multiply denominators by 0
+). Now she wants know the minimal number of claps to make her fractions equal (by value). Please help her and find the required number of claps!
