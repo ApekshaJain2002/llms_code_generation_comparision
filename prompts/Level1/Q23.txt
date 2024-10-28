@@ -1,0 +1,1 @@
+Given a sequence of postcards and photos represented by characters in a string (where consecutive identical characters represent a group of the same type), find the minimum number of trips needed to move all items to the closet if a maximum of 5 items can be carried at a time, and only one type can be carried per trip.
