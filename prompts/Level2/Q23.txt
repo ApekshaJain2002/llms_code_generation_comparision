@@ -1,0 +1,7 @@
+Polycarpus has postcards and photos hung in a row on the wall. 
+He decided to put them away to the closet and hang on the wall a famous painter's picture. 
+Polycarpus does it like that: he goes from the left to the right and removes the objects consecutively. 
+As Polycarpus doesn't want any mix-ups to happen, he will not carry in his hands objects of two different types. 
+In other words, Polycarpus can't carry both postcards and photos simultaneously. Sometimes he goes to the closet and puts the objects there, 
+thus leaving his hands free. Polycarpus must put all the postcards and photos to the closet. He cannot skip objects. What minimum number of 
+times he should visit the closet if he cannot carry more than 5 items?
