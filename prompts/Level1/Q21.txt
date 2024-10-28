@@ -1,0 +1,1 @@
+Given a string containing the word "WUB" as a separator, remove all "WUB" sequences and output the original words with a single space between them.
