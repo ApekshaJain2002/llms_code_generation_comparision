@@ -1,0 +1,13 @@
+In a magical forest, there lived a talented carpenter named Elara. She was known far and wide for crafting the finest wooden toys. One day, Elara received a special request from the village children to create a set of three beautiful equilateral triangle-shaped kites for their upcoming festival.
+
+Elara gathered her tools and headed to her workshop, where she had a collection of n sticks, each with a positive integral length 
+a1,a2...an. 
+
+As she laid out the sticks, she realized that not all of them were of equal length. To craft the perfect kites, she needed to ensure that she could select three sticks of the same length.
+
+Determined to fulfill the children’s request, Elara thought about how she could adjust the lengths of her sticks. She could either increase or decrease the length of any chosen stick by 1, as long as none of the sticks would lose their positive length.
+
+Elara knew that time was of the essence, and she needed to figure out the minimum number of adjustments required to make it possible to select three sticks that would form an equilateral triangle.
+
+Could you help Elara find the least number of operations she must perform to create the three kites for the children?
+
