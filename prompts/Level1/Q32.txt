@@ -1,0 +1,6 @@
+Given a string of lowercase and uppercase letters, determine if it follows the exact pattern "meow" (case-insensitive), with the following conditions:
+
+The string must start with one or more 'm' or 'M' characters.
+Followed by one or more 'e' or 'E' characters.
+Followed by one or more 'o' or 'O' characters.
+Ending with one or more 'w' or 'W' characters, with no extra characters afterward.
