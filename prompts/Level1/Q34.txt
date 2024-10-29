@@ -1,0 +1,9 @@
+Given an array of integers prices, where prices[i] represents the value on the 
+i-th day, and an integer fee representing a transaction fee:
+
+Determine the maximum profit achievable with any number of transactions, where each transaction consists of a buy followed by a sell, with the transaction fee applied to each sale.
+
+Conditions:
+
+You may not hold more than one stock at a time (i.e., you must sell before buying again).
+The transaction fee is charged only once per transaction (buy and sell pair).
