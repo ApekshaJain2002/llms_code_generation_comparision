@@ -1,0 +1,8 @@
+You are given an array of integers where each element represents a value on a given day.
+
+Determine the maximum possible gain you can achieve by performing at most two transactions.
+
+Rules:
+
+You can only buy once and sell once per transaction.
+You must complete the first transaction (sell) before starting the second transaction (buy).
