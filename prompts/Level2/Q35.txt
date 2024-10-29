@@ -1,0 +1,5 @@
+You are organizing a sequence of tasks, each represented by an integer in an array. Your goal is to select the longest sequence of tasks that can be completed in strictly increasing order, making sure that this sequence is also the earliest possible arrangement in terms of the order they appear.
+
+In other words, if there are multiple ways to achieve the longest sequence of tasks, you should choose the one that starts with tasks appearing earliest in the original list.
+
+Given an integer n and an array of task IDs arr, can you find the longest increasing sequence of tasks that meets these conditions?
