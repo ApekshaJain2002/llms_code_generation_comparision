@@ -1,0 +1,5 @@
+You're a savvy investor tracking the daily prices of a stock, aiming to maximize your profit over time. Each day’s stock price is recorded in an array, and you also have a fixed transaction fee that applies every time you buy and then sell the stock.
+
+You’re free to make as many trades as you like, but to maximize your returns, you'll need to account for the transaction fee each time you buy and sell. However, remember you can only hold one stock at a time, so you must sell before you can buy again.
+
+With this strategy and fee in mind, what’s the maximum profit you can achieve?
