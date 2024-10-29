@@ -1,0 +1,3 @@
+Imagine you're reading a book and come across a particularly long string of letters. You're curious to find the longest part of this string where no letter repeats, as if you're searching for the longest unique phrase within it.
+
+Given a string, can you determine the length of the longest stretch of unique characters in a row? This will show the longest sequence you could read without encountering the same letter twice.
