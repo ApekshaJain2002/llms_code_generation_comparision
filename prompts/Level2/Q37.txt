@@ -1,0 +1,15 @@
+Story: The Guardian of the Ancient Temple
+
+In an ancient land, there was a grand temple guarded by an enchanted, wise spirit named Kael. Legend says that deep within the temple lay treasures beyond imagination, but the temple doors would only open for those who could prove themselves wise and balanced.
+
+At the temple’s entrance, there was a giant stone tablet with ancient inscriptions. These inscriptions were not merely words; they were a secret code written using symbols: ‘(’, ‘)’, ‘{’, ‘}’, ‘[’, and ‘]’. To open the doors, the code needed to be perfectly balanced.
+
+The first adventurer, a bold but impatient traveler, tried his luck. He glanced at the tablet and decided to push open the doors. But as he moved closer, Kael appeared in a swirl of mist, his voice echoing through the air: “The order is wrong, traveler. The symbols must align in harmony.” And with that, the adventurer was gently pushed back by an invisible force.
+
+The wise Kael then revealed the rules of the ancient code:
+
+For every opening symbol ‘(’, ‘{’, or ‘[’, there must be a matching closing symbol ‘)’, ‘}’, or ‘]’.
+The symbols must close in the correct order. You cannot close a parenthesis without first closing any opened symbols after it.
+With these instructions, a clever young scholar stepped forward. She observed the stone tablet and began to analyze the symbols. Each time she encountered an opening symbol, she kept track of it, and when she encountered a closing symbol, she checked to see if it matched the last opened one. If they matched, she continued; if not, she knew the code was unbalanced and would try again.
+
+After much careful consideration, she deciphered the sequence of symbols perfectly, making sure each open symbol had a matching close in the correct order. Kael smiled approvingly as the temple doors opened wide, welcoming the scholar into the legendary hall of treasures.
