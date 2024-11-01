@@ -1,0 +1,5 @@
+Lily has a combination lock represented by an array Arr[] of numbers. She's trying to unlock it by rearranging the digits to form the next possible "greater" combination. She wants the combination to be just a step higher than the current one in lexicographical order (like moving to the next word in a dictionary).
+
+However, if she’s already at the highest possible combination, she’ll need to reset the lock to the lowest arrangement, where the digits are sorted in ascending order.
+
+Question: Help Lily find the next combination for her lock, or reset it to the smallest possible arrangement if the next one isn’t available.
