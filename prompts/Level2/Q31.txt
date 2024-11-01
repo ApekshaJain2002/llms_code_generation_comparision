@@ -1,3 +1,11 @@
-You have a garland consisting of 4 colored light bulbs, the color of the i-th light bulb is si.
-Initially, all the light bulbs are turned off. Your task is to turn all the light bulbs on. You can perform the following operation any number of times: select a light bulb and switch its state (turn it on if it was off, and turn it off if it was on). The only restriction on the above operation is that you can apply the operation to a light bulb only if the previous operation was applied to a light bulb of a different color (the first operation can be applied to any light bulb).
-Calculate the minimum number of operations to turn all the light bulbs on, or report that this is impossible.
+Alice and Bob are bored, so they decide to play a game with their wallets. Alice has a
+ coins in her wallet, while Bob has b
+ coins in his wallet.
+
+Both players take turns playing, with Alice making the first move. In each turn, the player will perform the following steps in order:
+
+Choose to exchange wallets with their opponent, or to keep their current wallets.
+Remove 1
+ coin from the player's current wallet. The current wallet cannot have 0
+ coins before performing this step.
+The player who cannot make a valid move on their turn loses. If both Alice and Bob play optimally, determine who will win the game.
