@@ -1,0 +1,5 @@
+Emma is working as a security analyst, monitoring a long list of recorded sensor values represented by an array of numbers, arr. To get insights into the peak activity in any given period, she uses a "sliding window" that captures a subset of the data at a time.
+
+Emma sets the window to observe k consecutive sensor readings. Starting from the beginning of the data, she shifts the window one position to the right each time, noting the highest value in the current window. She continues this process until the window has moved across all the sensor data.
+
+Question: Help Emma find the highest sensor reading in each position of the sliding window as it moves across the entire array.
