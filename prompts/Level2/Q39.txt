@@ -1,0 +1,5 @@
+Alex has a list of freelance projects he can take on. Each project has a deadline and a profit, but he’ll only earn the profit if he finishes the project by its deadline. Each project takes exactly one day to complete, and he can only work on one project per day.
+
+With a packed schedule and deadlines to meet, Alex wants to maximize his earnings. He needs to decide which projects to prioritize to complete the maximum number and earn the most profit by the end.
+
+Question: Help Alex find the best combination of projects he should work on to maximize both the number of projects completed and the total profit he can earn.
