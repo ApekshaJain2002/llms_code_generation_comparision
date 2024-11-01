@@ -1,3 +1,9 @@
-Given a string of length 4 with characters representing different types, determine the minimum number of operations required to change each character's state (0 to 1 or 1 to 0) so that all are in state 1, with the constraint that consecutive operations must be applied to different characters.
+Two players are playing a game with coins in their wallets. Player 1 has a coins, and Player 2 has b coins. They take turns, with Player 1 going first. On each turn, a player can either switch wallets with the other player or keep their own, then must remove one coin from their wallet. If a player has no coins left on their turn, they lose.
 
-Output the minimum number of operations needed, or -1 if it’s impossible.
+Question: If both players play optimally, who will win the game?
+
+
+
+
+
+
