@@ -1,33 +1,49 @@
 #include <iostream>
-#include<bits/stdc++.h>
+#include <map>
 using namespace std;
  
 int main()
 {
-    int t,n;
-    cin>>t;
-    while(t--)
+    int t;
+    cin >> t;
+    
+    while (t--)
     {
-        cin>>n;
-        int arr[n];
-        for(int i=0;i<n;i++)
+        map<char, int> m;
+        string n;
+        cin >> n;
+        int ans = 0;
+        for (int i = 0; i < n.length(); i++)
         {
-            cin>>arr[i];
+            m[n[i]]++;
         }
-        int ct=0;
-        sort(arr,arr+n);
-        for(int i=0;i<n-1;i++)
+ 
+        // for (auto it : m)
+        //     cout << it.first << " " << it.second << endl;
+ 
+        if (m.size() == 4)
+            cout << 4 << endl;
+        else if (m.size() == 1)
+            cout << -1 << endl;
+        else if (m.size() == 3)
         {
-            if(arr[i]==arr[i+1])
+            cout << 4 << endl;
+        }
+        else
+        {
+            for (auto it : m)
             {
-                cout<<"NO"<<endl;
-                break;
+                if (it.second == 3)
+                {
+                    cout << 6 << endl;
+                    ans = 1;
+                    break;
+                }
             }
-            else
-            ct++;
+            if (ans == 0)
+ 
+                cout << 4 << endl;
         }
-        if(ct==n-1)
-        cout<<"YES"<<endl;
     }
  
     return 0;
