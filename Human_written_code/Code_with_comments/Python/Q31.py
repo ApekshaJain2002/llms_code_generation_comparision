@@ -1,23 +1,17 @@
 def main():
+    # Read the number of test cases
     t = int(input().strip())
     
+    # Loop through each test case
     for _ in range(t):
-        s = input().strip()
-        char_count = {}
+        # Read two integers a and b
+        a, b = map(int, input().split())
         
-        # Count occurrences of each character
-        for char in s:
-            char_count[char] = char_count.get(char, 0) + 1
-
-        # Determine output based on the conditions
-        if len(char_count) >= 3:
-            print(4)
-        elif len(char_count) == 2 and any(count == 2 for count in char_count.values()):
-            print(4)
-        elif len(char_count) == 2:
-            print(6)
+        # Check if the sum of a and b is even
+        if (a + b) % 2 == 0:
+            print("Bob")
         else:
-            print(-1)
+            print("Alice")
 
 if __name__ == "__main__":
     main()
