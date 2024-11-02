@@ -1,34 +1,30 @@
-import sys
-input = sys.stdin.read
-
+# Read input values from standard input
 def main():
-    data = input().split()
-    index = 0
-    Tc = int(data[index])
-    index += 1
+    # Number of vectors
+    n = int(input().strip())
     
-    results = []
-    for _ in range(Tc):
-        n = int(data[index])
-        index += 1
-        v = list(map(int, data[index:index + n]))
-        index += n
-        
-        # Sort the array
-        v.sort()
-        
-        # Initialize minimum with a large number
-        mn = float('inf')
-        
-        # Calculate the minimum difference
-        for i in range(1, n - 1):
-            k = ((v[i + 1] - v[i]) + (v[i] - v[i - 1]))
-            mn = min(mn, k)
-        
-        results.append(str(mn))
+    # Initialize lists to store x, y, z coordinates
+    x = []
+    y = []
+    z = []
     
-    # Output all results at once
-    sys.stdout.write("\n".join(results) + "\n")
+    # Read each vector's coordinates
+    for _ in range(n):
+        xi, yi, zi = map(int, input().split())
+        x.append(xi)
+        y.append(yi)
+        z.append(zi)
+    
+    # Calculate the sum of each coordinate axis
+    sum1 = sum(x)
+    sum2 = sum(y)
+    sum3 = sum(z)
+    
+    # Check if all sums are zero
+    if sum1 == 0 and sum2 == 0 and sum3 == 0:
+        print("YES")
+    else:
+        print("NO")
 
 if __name__ == "__main__":
     main()
