@@ -1,22 +1,27 @@
 import sys
 input = sys.stdin.read
+
 def main():
     data = input().split()
-    index = 0
-    Tc = int(data[index])
-    index += 1
+    t = int(data[0])
+    idx = 1
+    
     results = []
-    for _ in range(Tc):
-        n = int(data[index])
-        index += 1
-        v = list(map(int, data[index:index + n]))
-        index += n
-        v.sort()
-        mn = float('inf')
-        for i in range(1, n - 1):
-            k = ((v[i + 1] - v[i]) + (v[i] - v[i - 1]))
-            mn = min(mn, k)
-        results.append(str(mn))
-    sys.stdout.write("\n".join(results) + "\n")
+    for _ in range(t):
+        n = int(data[idx])
+        idx += 1
+        a = list(map(int, data[idx:idx + n]))
+        idx += n
+        
+        a.sort()
+        ans = float('inf')
+        
+        for i in range(2, n):
+            ans = min(ans, a[i] - a[i - 2])
+        
+        results.append(ans)
+    
+    print("\n".join(map(str, results)))
+
 if __name__ == "__main__":
     main()
