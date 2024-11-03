@@ -3,20 +3,30 @@
 
 using namespace std;
 
-int main() {
-    vector<int> arr = {1, 1, 0, 1, 1, 1};
-    int max_count = 0, curr_count = 0;
+int findLargestElement(const vector<int>& arr) {
+    if (arr.empty()) {
+        return -1; // Handle empty array case
+    }
 
-    for (int i = 0; i < arr.size(); i++) {
-        if (arr[i] == 1) {
-            curr_count++;
-            max_count = max(max_count, curr_count);
-        } else {
-            curr_count = 0;
+    int largest = arr[0];
+    for (int i = 1; i < arr.size(); ++i) {
+        if (arr[i] > largest) {
+            largest = arr[i];
         }
     }
 
-    cout << max_count << endl;
+    return largest;
+}
+
+int main() {
+    vector<int> arr = {10, 5, 20, 8, 15};
+    int largestElement = findLargestElement(arr);
+
+    if (largestElement != -1) {
+        cout << "Largest element: " << largestElement << endl;
+    } else {
+        cout << "Array is empty" << endl;
+    }
 
     return 0;
 }
