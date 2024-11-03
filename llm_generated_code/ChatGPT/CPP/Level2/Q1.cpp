@@ -1,16 +1,10 @@
-#include <vector>
+#include <iostream>
 #include <algorithm>
 using namespace std;
 
-int longestSuccessStreak(vector<int>& spells) {
-    int maxStreak = 0, currentStreak = 0;
-    for (int spell : spells) {
-        if (spell == 1) {
-            currentStreak++;
-            maxStreak = max(maxStreak, currentStreak);
-        } else {
-            currentStreak = 0;
-        }
-    }
-    return maxStreak;
+int main() {
+    int chocolates[] = {5, 2, 12, 20, 1};
+    int maxChocolates = *max_element(chocolates, chocolates + 5);
+    cout << "The highest number of chocolates that one has is: " << maxChocolates << endl;
+    return 0;
 }
