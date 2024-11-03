@@ -3,26 +3,21 @@
 
 using namespace std;
 
-int longestStreak(const vector<int>& spells) {
-    int n = spells.size();
-    int maxStreak = 0, currentStreak = 0;
+int main() {
+    vector<int> chocolates = {5, 2, 12, 20, 1};
+    int max_chocolates = chocolates[0];
 
-    for (int i = 0; i < n; i++) {
-        if (spells[i] == 1) {
-            currentStreak++;
-            maxStreak = max(maxStreak, currentStreak);
-        } else {
-            currentStreak = 0;
+    // Time complexity: O(n)
+    // Space complexity: O(1)
+    // Lines of code: 6
+    // Cyclomatic complexity: 2
+    for (int i = 1; i < chocolates.size(); i++) {
+        if (chocolates[i] > max_chocolates) {
+            max_chocolates = chocolates[i];
         }
     }
 
-    return maxStreak;
-}
+    cout << "The highest number of chocolates is: " << max_chocolates << endl;
 
-int main() {
-    vector<int> spells = {1, 0, 1, 1, 0, 1, 1, 1};
-    int maxStreak = longestStreak(spells);
-    cout << "Longest streak of successful spells: " << maxStreak << endl;
     return 0;
 }
-
