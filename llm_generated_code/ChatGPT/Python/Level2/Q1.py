@@ -1,12 +1,13 @@
-def longest_streak(spells):
-    max_streak = current_streak = 0
-    for spell in spells:
-        if spell == 1:
-            current_streak += 1
-            max_streak = max(max_streak, current_streak)
-        else:
-            current_streak = 0
-    return max_streak
+# Chocolates owned by each friend
+chocolates = {
+    "Apeksha": 5,
+    "Avisha": 2,
+    "Abiha": 12,
+    "Saara": 20,
+    "Princi": 1
+}
 
-spells = [1, 0, 1, 1, 0, 1, 1, 1]
-print(longest_streak(spells))
+# Find the maximum number of chocolates
+max_chocolates = max(chocolates.values())
+print("The highest number of chocolates is:", max_chocolates)
+
