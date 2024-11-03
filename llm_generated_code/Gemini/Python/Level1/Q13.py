@@ -1,33 +1,36 @@
-def climb_stairs_dp(n):
+def max_sum_non_adjacent(arr):
   """
-  Finds the number of distinct ways to climb N stairs using dynamic programming.
+  Finds the maximum sum of non-adjacent elements in a circular array.
 
   Args:
-      n: The number of stairs.
+      arr: The input array.
 
   Returns:
-      The number of distinct ways to climb N stairs.
+      The maximum sum.
   """
 
+  n = len(arr)
+
+  # Handle base cases
   if n == 1:
-    return 1
+    return arr[0]
   elif n == 2:
-    return 2
+    return max(arr[0], arr[1])
 
-  # Initialize a list to store solutions for 0 to n stairs
-  dp = [0] * (n + 1)
+  # Calculate the maximum sum considering the first and last elements as non-adjacent
+  dp = [0] * n
+  dp[0] = arr[0]
+  dp[1] = max(arr[0], arr[1])
+  for i in range(2, n):
+    dp[i] = max(dp[i - 1], dp[i - 2] + arr[i])
 
-  # Base cases
-  dp[1] = 1
-  dp[2] = 2
+  # Consider the circular nature: exclude the first or last element
+  max_sum1 = dp[n - 1]  # Excluding the last element
+  max_sum2 = dp[n - 2] + arr[0]  # Excluding the first element
 
-  # Fill the dp list bottom-up
-  for i in range(3, n + 1):
-    dp[i] = dp[i - 1] + dp[i - 2]
+  return max(max_sum1, max_sum2)
 
-  return dp[n]
-
-# Example usage with dynamic programming
-n = 4
-num_ways = climb_stairs_dp(n)
-print("Number of distinct ways to climb", n, "stairs (dynamic programming):", num_ways)
+# Example usage
+arr = [1, 2, 3, 1]
+max_sum = max_sum_non_adjacent(arr)
+print("Maximum sum of non-adjacent elements:", max_sum)
