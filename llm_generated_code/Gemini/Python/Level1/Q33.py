@@ -1,4 +1,5 @@
-n = len(prices)
+def max_profit(prices):
+    n = len(prices)
     if n < 2:
         return 0
     right_max = [0] * n
@@ -11,3 +12,11 @@ n = len(prices)
         max_profit = max(max_profit, prices[i] - left_min + right_max[i])
         left_min = min(left_min, prices[i])
     return max_profit
+
+def main():
+    n = int(input())
+    prices = list(map(int, input().split()))
+    print(max_profit(prices))
+
+if __name__ == "__main__":
+    main()
