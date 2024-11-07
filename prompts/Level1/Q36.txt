@@ -1,1 +1,10 @@
-Given a String, find the length of longest substring without any repeating character.
+You are given an array a of n integers. Initially there is only one copy of the given array.
+
+You can do operations of two types:
+
+1) Choose any array and clone it. After that there is one more copy of the chosen array.
+2) Swap two elements from any two copies (maybe in the same copy) on any positions.
+
+You need to find the minimal number of operations needed to obtain a copy where all elements are equal.
+
+(For t test cases)
