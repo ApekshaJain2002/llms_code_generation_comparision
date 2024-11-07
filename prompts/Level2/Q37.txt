@@ -1,15 +1,12 @@
-Story: The Guardian of the Ancient Temple
+In a mystical kingdom, there exists a powerful binary string s, made up of magical symbols: only "0"s and "1"s. The kingdom’s wise ruler, tasked with restoring harmony, seeks to transform this string into a special “good” string t.
 
-In an ancient land, there was a grand temple guarded by an enchanted, wise spirit named Kael. Legend says that deep within the temple lay treasures beyond imagination, but the temple doors would only open for those who could prove themselves wise and balanced.
+To create this good string t, it must follow a unique rule: each position in t must differ from the same position in the original string s. In other words, no character in t can match the character that originally appeared at that position in s. If the ruler succeeds, t will radiate a magic aura that brings peace to the kingdom.
 
-At the temple’s entrance, there was a giant stone tablet with ancient inscriptions. These inscriptions were not merely words; they were a secret code written using symbols: ‘(’, ‘)’, ‘{’, ‘}’, ‘[’, and ‘]’. To open the doors, the code needed to be perfectly balanced.
+The ruler has two magical abilities to achieve this transformation:
 
-The first adventurer, a bold but impatient traveler, tried his luck. He glanced at the tablet and decided to push open the doors. But as he moved closer, Kael appeared in a swirl of mist, his voice echoing through the air: “The order is wrong, traveler. The symbols must align in harmony.” And with that, the adventurer was gently pushed back by an invisible force.
+Vanish Spell: For 1 coin, the ruler can delete any character from s, gradually shaping it into the ideal string t.
+Teleport Spell: The ruler can freely swap any two characters within s at no cost.
 
-The wise Kael then revealed the rules of the ancient code:
+The ruler may cast these spells as often as necessary, but they wish to minimize the cost. Can you help the ruler determine the minimum number of coins required to transform s into a good string t? Remember, the empty string is considered “good” and costs nothing!
 
-For every opening symbol ‘(’, ‘{’, or ‘[’, there must be a matching closing symbol ‘)’, ‘}’, or ‘]’.
-The symbols must close in the correct order. You cannot close a parenthesis without first closing any opened symbols after it.
-With these instructions, a clever young scholar stepped forward. She observed the stone tablet and began to analyze the symbols. Each time she encountered an opening symbol, she kept track of it, and when she encountered a closing symbol, she checked to see if it matched the last opened one. If they matched, she continued; if not, she knew the code was unbalanced and would try again.
-
-After much careful consideration, she deciphered the sequence of symbols perfectly, making sure each open symbol had a matching close in the correct order. Kael smiled approvingly as the temple doors opened wide, welcoming the scholar into the legendary hall of treasures.
+(For t test cases)
