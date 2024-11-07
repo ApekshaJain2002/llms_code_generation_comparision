@@ -1,34 +1,29 @@
-#include <bits/stdc++.h>
+#include <iostream>
+#include <string>
+#include <vector>
 using namespace std;
 
-bool isValid(string s) {
-    stack<char> st;
+int main() {
+    int t;
+    cin >> t;
 
-    for (auto it : s) {
-        if (it == '(' || it == '{' || it == '[') 
-            st.push(it);
-        else {
-            if (st.empty()) return false;
+    while (t--) {
+        string s;
+        cin >> s;
 
-            char ch = st.top();
-            st.pop();
+        vector<int> cnt(2, 0);
+        for (char c : s) {
+            cnt[c - '0']++;
+        }
 
-            if ((it == ')' && ch == '(') || (it == ']' && ch == '[') || (it == '}' && ch == '{'))
-                continue;
-            else
-                return false;
+        for (int i = 0; i <= s.size(); i++) {
+            if (i == s.size() || cnt[1 - (s[i] - '0')] == 0) {
+                cout << s.size() - i << endl;
+                break;
+            }
+            cnt[1 - (s[i] - '0')]--;
         }
     }
 
-    return st.empty();
+    return 0;
 }
-
-int main() {
-    string s = "()[{}()]";
-
-    if (isValid(s))
-        cout << "True" << endl;
-    else
-        cout << "False" << endl;
-}
-
