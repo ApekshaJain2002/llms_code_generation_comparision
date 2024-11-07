@@ -1,6 +1,13 @@
-Problem Statement: Check Balanced Parentheses. Given string str containing just the characters '(', ')', '{', '}', '[' and ']', check if the input string is valid and return true if the string is balanced otherwise return false.
+You are given a binary string s(a string consisting only of 0-s and 1-s).
+You can perform two types of operations on s:
 
-Note: string str is valid if:
+1) delete one character from s. This operation costs 1 coin;
+2) swap any pair of characters in s. This operation is free (costs 0 coins).
 
-Open brackets must be closed by the same type of brackets.
-Open brackets must be closed in the correct order.
+You can perform these operations any number of times and in any order.
+
+Let's name a string you've got after performing operations above as t. The string t is good if for each I from 1 to |t| ti≠si (|t| is the length of the string t). The empty string is always good. Note that you are comparing the resulting string t with the initial string s.
+
+What is the minimum total cost to make the string t good?
+
+(For t test cases)
