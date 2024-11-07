@@ -1,11 +1,11 @@
-Dmitry has n cubes. Each cube has a number on it, and Dmitry has a favorite cube at position f.
-
-He arranges the cubes in descending order based on their numbers.
-Then, he removes the top k cubes.
-You need to determine if his favorite cube will be removed after sorting and removing the cubes.
-
+You have n cubes, each with a number on it, and a favorite cube at position f.
+Arrange the cubes in descending order based on their numbers.
+Remove the top k cubes.
+Determine if the favorite cube will be removed after sorting and removing the cubes.
 For each test case, output:
 
-"YES" if his favorite cube will definitely be removed,
-"NO" if his favorite cube will definitely not be removed,
+"YES" if favorite cube will definitely be removed,
+"NO" if favorite cube will definitely not be removed,
 "MAYBE" if it's uncertain.
+
+(For t test cases)
