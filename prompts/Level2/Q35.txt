@@ -6,6 +6,7 @@ After sorting, Dmitry removed the first k cubes. Then he became interested in wh
 
 For each test case, output:
 
+
 "YES" if his favorite cube will definitely be removed,
 "NO" if his favorite cube will definitely not be removed,
 "MAYBE" if it's uncertain.
