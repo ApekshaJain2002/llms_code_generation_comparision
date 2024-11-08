@@ -1,30 +1,32 @@
-#include <bits/stdc++.h>
-using namespace std;
+#include <cstdio>
+#include <algorithm>
+#include <vector>
+typedef long long ll;
 
-vector<int> maxSlidingWindow(vector<int>& arr, int k) {
-    vector<int> ans;
-    set<pair<int, int>, greater<pair<int,int>>> st;
+bool cmp(std::pair<ll, ll> a, std::pair<ll, ll> b){
+    if(a.first != b.first){return a.first < b.first;}
+    return a.second > b.second;
+}
 
-    for (int i = 0; i < k; i++)
-        st.insert({ arr[i], i });
+int main(){
 
-    ans.push_back((st.begin())->first);
+    ll t; scanf("%lld", &t);
+    while(t--){
+        ll n; scanf("%lld", &n);
+        std::vector<std::pair<ll, ll> > v(n);
+        for(ll p = 0; p < n; p++){scanf("%lld %lld", &v[p].first, &v[p].second);}
+        sort(v.begin(), v.end(), cmp);
 
-    for (int i = k; i < arr.size(); i++) {
-        st.insert({ arr[i], i });
-        st.erase({ arr[i - k], (i - k) });
-        ans.push_back(st.begin()->first);
+        ll idx(0), cnt(0), total(0);
+        for(ll p = 0; p < n; p++){
+            if(p < idx){continue;}
+            total += v[p].second;
+            ++cnt;
+            while(idx < n && v[idx].first <= cnt){++idx;}
+            cnt = p - idx + 1; cnt = (cnt > 0 ? cnt : 0);
+        }
+
+        printf("%lld\n", total);
     }
 
-    return ans;
 }
-
-int main() {
-    vector<int> arr = { 2, 3, 7, 9, 5, 1, 6, 4, 3 };
-    int k = 3;
-    vector<int> res = maxSlidingWindow(arr, k);
-    for (auto i : res)
-        cout << i << " ";
-    return 0;
-}
-
