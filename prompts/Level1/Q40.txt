@@ -1,3 +1,5 @@
-Given an array Arr[] of integers, rearrange the numbers of the given array into the lexicographically next greater permutation of numbers.
+Polycarp has an array of n(n is even) integers a1,a2,…,an. Polycarp conceived of a positive integer k. After that, Polycarp began performing the following operations on the array: take an index i (1≤i≤n) and reduce the number ai by k.
 
-If such an arrangement is not possible, it must rearrange to the lowest possible order (i.e., sorted in ascending order).
+After Polycarp performed some (possibly zero) number of such operations, it turned out that all numbers in the array became the same. Find the maximum k at which such a situation is possible, or print −1 if such a number can be arbitrarily large.
+
+(for t test cases)
