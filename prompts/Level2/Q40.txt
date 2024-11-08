@@ -1,5 +1,7 @@
-Lily has a combination lock represented by an array Arr[] of numbers. She's trying to unlock it by rearranging the digits to form the next possible "greater" combination. She wants the combination to be just a step higher than the current one in lexicographical order (like moving to the next word in a dictionary).
+Polycarp was a curious mathematician who loved playing with numbers. One day, he arranged an array of n integers, carefully lining them up in a neat row. To add a twist to his setup, he came up with a positive number k, a mysterious number that would help him transform his array.
 
-However, if she’s already at the highest possible combination, she’ll need to reset the lock to the lowest arrangement, where the digits are sorted in ascending order.
+He then set himself a strange goal: he wanted all the numbers in the array to become identical. To achieve this, Polycarp devised a rule. He could pick any number in the array and reduce it by k as many times as he wanted. Carefully choosing his moves, he aimed to see if he could make every element match exactly.
 
-Question: Help Lily find the next combination for her lock, or reset it to the smallest possible arrangement if the next one isn’t available.
+But a question lingered—what’s the largest value of k he could use to succeed in this quest? And was it even possible, or could the number k be infinitely large? Polycarp was determined to solve the puzzle, seeking the perfect k to make his array a harmonious line of identical numbers.
+
+(for t test cases)
