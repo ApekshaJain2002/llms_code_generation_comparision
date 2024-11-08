@@ -1,5 +1,7 @@
-Alex has a list of freelance projects he can take on. Each project has a deadline and a profit, but he’ll only earn the profit if he finishes the project by its deadline. Each project takes exactly one day to complete, and he can only work on one project per day.
+Toma had always heard about the legendary Binary Café, a quirky spot known for its desserts priced by powers of two. Intrigued, he decided to pay a visit, excited to try the unique sweets they offered.
 
-With a packed schedule and deadlines to meet, Alex wants to maximize his earnings. He needs to decide which projects to prioritize to complete the maximum number and earn the most profit by the end.
+Upon arriving, he learned the café had k distinct desserts, each priced according to its binary magic: the 0th dessert cost 1 coin, the 1st cost 2 coins, the 2nd cost 4 coins, and so on, with each dessert doubling in price. Toma had brought n coins with him, ready to sample as many desserts as his budget allowed—but he had one rule: he’d only try each dessert once. After all, one bite was enough to savor the flavors.
 
-Question: Help Alex find the best combination of projects he should work on to maximize both the number of projects completed and the total profit he can earn.
+Now, Toma found himself in a delightful dilemma. He began calculating the combinations of desserts he could afford without exceeding his budget. How many ways could he mix and match desserts, staying within his coin limit? Eager to sample a range of treats, Toma was ready to dive into the challenge and maximize his tasting experience at the Binary Café!
+
+(for t test cases)
