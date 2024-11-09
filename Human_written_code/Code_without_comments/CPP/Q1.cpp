@@ -1,26 +1,28 @@
-
 #include <bits/stdc++.h>
 using namespace std;
-int findLargestElement(int arr[], int n) {
  
-  int max = arr[0];
-  for (int i = 0; i < n; i++) {
-    if (max < arr[i]) {
-      max = arr[i];
-    }
+void solve() {
+  int n, k;
+  cin >> n >> k;
+  vector<int> brand_cost(k, 0);
+  for (int i = 0; i < k; i++) {
+    int b, c;
+    cin >> b >> c;
+    brand_cost[b - 1] += c;
   }
-  return max;
+  sort(brand_cost.rbegin(), brand_cost.rend());
+  long long ans = 0;
+  for (int i = 0; i < min(n, k); i++) {
+    ans += brand_cost[i];
+  }
+  cout << ans << '\n';
 }
+ 
 int main() {
-  int arr1[] = {2,5,1,3,0};
-  int n = 5;
-  int max = findLargestElement(arr1, n);
-  cout << "The largest element in the array is: " << max << endl;
-  int arr2[] =  {8,10,5,7,9};
-  n = 5;
-  max = findLargestElement(arr2, n);
-  cout << "The largest element in the array is: " << max<<endl;
+  int t;
+  cin >> t;
+  while (t--) {
+    solve();
+  }
   return 0;
 }
-
-
