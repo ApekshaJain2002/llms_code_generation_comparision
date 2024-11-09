@@ -1,3 +1,9 @@
-There are five children at a park, and each one has a basket filled with balls. 
-However, some baskets have no balls at all! The children need to line up in such a way that the baskets with no balls are all moved to the back, 
-while the baskets with balls remain at the front in the same order they were initially.
+Once upon a time in the kingdom of Numeria, there was a wise mathematician named Elyan who was faced with a peculiar task from the king. The king had a collection of n mystical jewels, each with a unique power level represented by an integer. These jewels, however, were scattered and unbalanced, with some having even power levels and others having odd ones. The king, known for his love of order, wanted all his jewels to have the same kind of power, either all even or all odd.
+
+Elyan was instructed to bring harmony to the jewels using a magical operation. In one operation, he could select any two jewels, one with an even power and the other with an odd power. He would then combine their powers in such a way that the weaker jewel would absorb the power of the stronger one, transforming its power level to the sum of the two. For example, if the weaker jewel had a power of 3 and the stronger one had a power of 6, the weaker jewel would be replaced by the power 3 + 6 = 9.
+
+The king wanted the transformation to happen as efficiently as possible, so Elyan needed to figure out the minimum number of operations required to make all jewels either fully even or fully odd.
+
+As Elyan gazed upon the sparkling jewels, he began to strategize. Each operation brought him closer to harmony in the collection, and he knew that the task ahead would require careful calculation to minimize the number of steps. Would he succeed in balancing the power of the jewels and fulfill the king's wish? Elyan set to work, determined to solve this mathematical riddle and bring unity to the king’s precious collection.
+
+(for t test cases)
