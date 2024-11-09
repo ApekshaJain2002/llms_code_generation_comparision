@@ -1,4 +1,11 @@
-A group of students is playing a sorting game with colored marbles. 
-There are three colors of marbles: red (0), blue (1), and green (2). 
-The marbles are scattered on the ground in random order, and the task is to help them arrange the marbles in such a way that all the red marbles come first, 
-followed by the blue marbles, and then the green marbles.
+In the kingdom of Numeria, the citizens believed in the power of “large” numbers, digits between 5 and 9 that were considered symbols of strength and luck. Numerians had an age-old legend that said that, with the right combination of “large” numbers, one could unlock the secrets of the universe.
+
+One day, a Numerian mathematician named Eli was given a challenging puzzle by the royal astrologer. The astrologer handed Eli a mysterious number, x, and asked him, “Can this number x be split into two ‘large’ numbers that both have the same number of digits?”
+
+Eli knew what the astrologer meant by “large numbers.” They were special numbers made up entirely of large digits—those between 5 and 9. For example, numbers like 555, 779, and 896 were considered large, as each of their digits fell within this range. To solve the puzzle, Eli had to find two large numbers, each with the same number of digits, that would add up to exactly x.
+
+Eli knew this was no easy task. Finding two large numbers that added up to an exact sum required careful testing, and each solution had to be perfect in both structure and calculation. Eli began to analyze the properties of x, trying to determine if it was even possible to break it down into the sum of two equally lucky and large numbers.
+
+Would Eli succeed in his mathematical quest? Could the power of the large numbers reveal their secrets once more? With a deep breath, Eli began his calculations, determined to unveil the mysteries behind the legendary sum.
+
+(for t test cases)
