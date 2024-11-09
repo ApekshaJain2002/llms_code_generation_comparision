@@ -1,34 +1,16 @@
 #include<bits/stdc++.h>
 using namespace std;
-string result(string s)
-{
-    int left = 0;
-    int right = s.length()-1;
-    string temp="";
-    string ans="";
-    while (left <= right) {
-        char ch= s[left];
-        if (ch != ' ') {
-            temp += ch;
-        } else if (ch == ' ') {
-            if (ans!="") ans = temp + " " + ans;
-            else ans = temp;
-            temp = "";
+int main(){
+    int t,n; cin>>t;
+    while(t--&&cin>>n){
+        int a[n],i,flag=0,c=0;
+        for(int i=0;i<n;i++) cin>>a[i];
+        for(i=0;i<=n;i++){
+            c=0;
+            for(int j=0;j<n;j++) if(a[j]>i) c++;
+            if(c==i){ flag=1; break;}
         }
-        left++;
+        if(flag) cout<<i<<'\n';
+        else cout<<-1<<endl;
     }
-    if (temp!="") {
-        if (ans!="") ans = temp + " " + ans;
-        else ans = temp;
-    }
-    return ans;    
-}
-int main()
-{
-    string st="TUF is great for interview preparation";
-    cout<<"Before reversing words: "<<endl;
-    cout<<st<<endl;
-    cout<<"After reversing words: "<<endl;
-    cout<<result(st);
-    return 0;
 }
