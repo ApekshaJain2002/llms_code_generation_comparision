@@ -1,3 +1,11 @@
-A group of wizards are casting a powerful spell. However, 
-in order for the spell to work, the words of the spell need to be spoken in reverse order! 
-The words are currently in the wrong sequence, and they need your help to reverse them before the magic can take effect.
+In a village nestled deep within a forest, there was an ancient tradition upheld by the townsfolk each year: the Festival of Truth. This festival was a time of celebration, but it was also a time of riddles and puzzles designed to test each villager’s honesty. The event culminated in the Circle of Truth, where each villager was called to make a statement about the number of liars among them.
+
+This year, n villagers gathered in the circle, each with something to say. However, in this peculiar village, there was a twist—some villagers were always honest, while others, known for their trickery, would lie without hesitation. The challenge was to determine exactly how many of these villagers were lying.
+
+One by one, each villager made a statement: “There are at least li liars among us.” Some claimed there were only a few liars, while others insisted that the village was filled with deceit. The task was given to the village’s cleverest puzzle-solver, Mara, who had to decide whether these statements could all be true or if there was a contradiction hidden among them.
+
+Mara’s challenge was to determine if there was a way to assign the roles of liars and truth-tellers in such a way that no one’s statement was proven false. If the villagers’ claims were consistent, she had to identify the exact number of liars among them. But if their statements contradicted one another, she would have to announce it, revealing that no such assignment was possible.
+
+As Mara pondered each villager's statement, she knew the solution would require patience and keen observation. Would she find the answer, or would the villagers’ web of words unravel into contradiction? The fate of the festival depended on her keen intellect as she set out to solve the mystery of the Circle of Truth.
+
+(for t test cases)
