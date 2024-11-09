@@ -1,1 +1,11 @@
-There are five friends, apeksha has 5 chocolates, avisha has 2, abiha has 12, saara has 20, princi has 1 chocolate. What is the highest number of chocolates that one have?
+Arseniy had always been an entrepreneur at heart. From lemonade stands as a kid to selling gadgets online, he was always on the lookout for his next big business idea. One day, while strolling through a bustling city park, he noticed people lining up to buy cold drinks from a vending machine. That's when it struck him: what if he owned his own soda vending machine?
+
+Excited by the idea, Arseniy wasted no time. He found the perfect vending machine, complete with n shelves for stocking different brands of soda. He also purchased a variety of soda bottles, each from a different brand and priced uniquely. The i-th bottle he bought had a brand index bi and a price ci.
+
+Arseniy’s machine had one unique restriction: each shelf could only hold bottles from a single brand, though he could put any number of bottles from that brand on it. This was a critical rule, as his profits depended on selecting the right brands for each shelf. To maximize his earnings, Arseniy needed to decide which brands would generate the most revenue if placed on the vending machine’s limited shelves.
+
+With a bit of math and planning, Arseniy aimed to maximize the amount he could earn from his new vending machine business. After all, he was certain every bottle would be sold, so this was all about arranging his stock for maximum profit. Now he was faced with a challenging question: How could he calculate the maximum amount he could earn by stocking the shelves with the right bottles?
+
+Thus, Arseniy's soda vending adventure began, and he was ready to calculate the best strategy for his new enterprise. Would he succeed in making his vending machine a hit? The answer lay in the numbers.
+
+(for t test cases)
