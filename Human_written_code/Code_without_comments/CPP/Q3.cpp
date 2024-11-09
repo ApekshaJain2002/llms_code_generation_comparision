@@ -1,29 +1,24 @@
-#include <bits/stdc++.h>
+#include <iostream>
 using namespace std;
-void sortArray(vector<int>& arr, int n) {
-    int low = 0, mid = 0, high = n - 1;
-    while (mid <= high) {
-        if (arr[mid] == 0) {
-            swap(arr[low], arr[mid]); 
-            low++;
-            mid++;
-        }
-        else if (arr[mid] == 1) {
-            mid++; 
-        }
-        else {
-            swap(arr[mid], arr[high]); 
-            high--;
-        }
+ 
+#define ll long long
+ 
+void solve() {
+  ll n; cin >> n;
+  n = n - n % 10 + (n % 10 + 1) % 10;
+  while (n > 9) {
+    if (n % 10 == 0) {
+      cout << "NO\n";
+      return;
     }
+    n /= 10;
+  }
+  cout << (n == 1 ? "YES\n" : "NO\n");
 }
+ 
 int main() {
-    vector<int> arr = {0, 2, 1, 2, 0, 1};
-    sortArray(arr, arr.size());
-    cout << "After sorting:" << endl;
-    for (int i = 0; i < arr.size(); i++) {
-        cout << arr[i] << " ";
-    }
-    cout << endl;
-    return 0;
+  ios_base::sync_with_stdio(false); cin.tie(NULL);
+  int t; cin >> t;
+  for (int i = 0; i < t; ++i) solve();
+  return 0;
 }
