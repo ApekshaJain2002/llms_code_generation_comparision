@@ -1,1 +1,5 @@
-Given an array, we have to find the largest element in the array.
+Arseniy came up with another business plan — to sell soda from a vending machine! For this, he purchased a machine with n shelves, as well as k bottles, where the i-th bottle is characterized by the brand index bi and the cost ci.
+You can place any number of bottles on each shelf, but all bottles on the same shelf must be of the same brand.
+Arseniy knows that all the bottles he puts on the shelves of the machine will be sold. Therefore, he asked you to calculate the maximum amount he can earn.
+
+(for t test cases)
