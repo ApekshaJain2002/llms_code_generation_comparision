@@ -1,38 +1,35 @@
 #include <iostream>
-#include <vector>
+#include <cmath>
 
 using namespace std;
 
-void sortColors(vector<int>& nums) {
-    int n = nums.size();
-    int low = 0, mid = 0, high = n - 1;
-
-    // Time complexity: O(n)
-    // Space complexity: O(1)
-    // Lines of code: 12
-    // Cyclomatic complexity: 3
-    while (mid <= high) {
-        if (nums[mid] == 0) {
-            swap(nums[low], nums[mid]);
-            low++;
-            mid++;
-        } else if (nums[mid] == 1) {
-            mid++;
-        } else {
-            swap(nums[mid], nums[high]);
-            high--;
-        }
+bool canBeSumOfLargeIntegers(int x) {
+    int digits = 0;
+    int temp = x;
+    while (temp > 0) {
+        digits++;
+        temp /= 10;
     }
+
+    // Check if the first digit is greater than or equal to 10
+    // and the last digit is less than or equal to 9.
+    return x / pow(10, digits - 1) >= 10 && x % 10 <= 9;
 }
 
 int main() {
-    vector<int> nums = {2, 0, 2, 1, 1, 0};
-    sortColors(nums);
+    int t;
+    cin >> t;
 
-    for (int num : nums) {
-        cout << num << " ";
+    while (t--) {
+        int x;
+        cin >> x;
+
+        if (canBeSumOfLargeIntegers(x)) {
+            cout << "Yes" << endl;
+        } else {
+            cout << "No" << endl;
+        }
     }
-    cout << endl;
 
     return 0;
 }
