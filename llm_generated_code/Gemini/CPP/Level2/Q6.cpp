@@ -1,27 +1,50 @@
 #include <iostream>
 #include <vector>
-#include <algorithm>
 
 using namespace std;
 
-void reverseWords(vector<string>& words) {
-    // Reverse the entire string
-    reverse(words.begin(), words.end());
+int countLiars(const vector<int>& claims) {
+    int n = claims.size();
 
-    // Reverse each word
-    for (string& word : words) {
-        reverse(word.begin(), word.end());
+    // Check for trivial cases
+    for (int li : claims) {
+        if (li == 0) return 0;
+        if (li == n) return n - 1;
     }
+
+    // Iterate through possible number of liars
+    for (int x = 1; x < n; ++x) {
+        int liarCount = 0;
+        for (int li : claims) {
+            if (li >= x) liarCount++;
+        }
+        if (liarCount == x) return x;
+    }
+
+    // If no consistent solution is found, the claims are contradictory
+    return -1;
 }
 
 int main() {
-    vector<string> words = {"hello", "world", "how", "are", "you"};
-    reverseWords(words);
+    int t;
+    cin >> t;
 
-    for (string word : words) {
-        cout << word << " ";
+    while (t--) {
+        int n;
+        cin >> n;
+
+        vector<int> claims(n);
+        for (int i = 0; i < n; ++i) {
+            cin >> claims[i];
+        }
+
+        int liars = countLiars(claims);
+        if (liars == -1) {
+            cout << "impossible" << endl;
+        } else {
+            cout << liars << endl;
+        }
     }
-    cout << endl;
 
     return 0;
 }
