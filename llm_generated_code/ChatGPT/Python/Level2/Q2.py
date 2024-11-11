@@ -1,11 +1,26 @@
-# List representing the number of balls in each child's basket
-baskets = [3, 0, 5, 0, 2]  # Example input where 0 means an empty basket
+def min_operations(jewels):
+    odd_count = 0
+    even_count = 0
+    
+    for power in jewels:
+        if power % 2 == 0:
+            even_count += 1
+        else:
+            odd_count += 1
+    
+    # The minimum number of operations needed to make all elements have the same parity
+    # is the minimum of converting all to even or all to odd
+    return min(odd_count, even_count)
 
-# Separate baskets with balls from empty baskets
-baskets_with_balls = [b for b in baskets if b > 0]
-empty_baskets = [b for b in baskets if b == 0]
+# Read input
+t = int(input())
+results = []
 
-# Combine the lists with baskets with balls first, followed by empty baskets
-arranged_baskets = baskets_with_balls + empty_baskets
-print("Baskets arranged with non-empty at the front:", arranged_baskets)
+for _ in range(t):
+    n = int(input())
+    jewels = list(map(int, input().split()))
+    result = min_operations(jewels)
+    results.append(result)
 
+for result in results:
+    print(result)
