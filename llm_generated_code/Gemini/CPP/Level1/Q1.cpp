@@ -4,41 +4,34 @@
 
 using namespace std;
 
+int maxProfit(vector<int>& brands, vector<int>& prices, int shelves) {
+    int n = brands.size();
+    vector<vector<int>> dp(n + 1, vector<int>(shelves + 1, 0));
+
+    for (int i = 1; i <= n; ++i) {
+        for (int j = 1; j <= shelves; ++j) {
+            dp[i][j] = max(dp[i - 1][j], dp[i - 1][j - 1] + prices[i - 1]);
+        }
+    }
+
+    return dp[n][shelves];
+}
+
 int main() {
     int t;
     cin >> t;
 
     while (t--) {
-        int n, k;
-        cin >> n >> k;
+        int n, shelves;
+        cin >> n >> shelves;
 
-        vector<pair<int, int>> bottles(k);
-        for (int i = 0; i < k; ++i) {
-            cin >> bottles[i].first >> bottles[i].second;
+        vector<int> brands(n), prices(n);
+        for (int i = 0; i < n; ++i) {
+            cin >> brands[i] >> prices[i];
         }
 
-        // Sort bottles by brand index
-        sort(bottles.begin(), bottles.end());
-
-        int available_shelves = n;
-        long long total_cost = 0;
-
-        for (int i = 0; i < k; ++i) {
-            int brand = bottles[i].first;
-            int cost = bottles[i].second;
-
-            // Place as many bottles of the current brand as possible
-            int num_bottles = min(available_shelves, k - i);
-            total_cost += num_bottles * cost;
-            available_shelves -= num_bottles;
-
-            // Skip to the next brand
-            while (i + 1 < k && bottles[i + 1].first == brand) {
-                ++i;
-            }
-        }
-
-        cout << total_cost << endl;
+        int maxProfit = maxProfit(prices, shelves);
+        cout << maxProfit << endl;
     }
 
     return 0;
