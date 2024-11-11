@@ -5,53 +5,48 @@
 
 using namespace std;
 
-long long maxEarnings(int n, int k, vector<int>& brands, vector<int>& costs) {
-    unordered_map<int, vector<int>> brandCostMap;
+long long maxEarnings(int n, int m, vector<int>& brands, vector<int>& prices) {
+    unordered_map<int, vector<int>> brandPrices;
     
-    // Group the costs by their brand
-    for (int i = 0; i < k; ++i) {
-        brandCostMap[brands[i]].push_back(costs[i]);
+    for (int i = 0; i < m; ++i) {
+        brandPrices[brands[i]].push_back(prices[i]);
     }
     
-    vector<long long> maxEarnings;
-    
-    // Find the total cost for each brand and sort
-    for (auto& entry : brandCostMap) {
-        vector<int>& costList = entry.second;
-        long long brandTotal = 0;
-        for (int cost : costList) {
-            brandTotal += cost;
+    vector<long long> maxBrandEarnings;
+    for (auto& bp : brandPrices) {
+        sort(bp.second.begin(), bp.second.end(), greater<int>());
+        long long sum = 0;
+        for (int price : bp.second) {
+            sum += price;
         }
-        maxEarnings.push_back(brandTotal);
+        maxBrandEarnings.push_back(sum);
     }
     
-    // Sort earnings in descending order
-    sort(maxEarnings.rbegin(), maxEarnings.rend());
-    
-    // Take the top 'n' earnings
-    long long totalEarnings = 0;
-    for (int i = 0; i < min(n, (int)maxEarnings.size()); ++i) {
-        totalEarnings += maxEarnings[i];
+    sort(maxBrandEarnings.begin(), maxBrandEarnings.end(), greater<long long>());
+    long long maxEarnings = 0;
+    for (int i = 0; i < n && i < maxBrandEarnings.size(); ++i) {
+        maxEarnings += maxBrandEarnings[i];
     }
     
-    return totalEarnings;
+    return maxEarnings;
 }
 
 int main() {
     int t;
     cin >> t;
+    
     while (t--) {
-        int n, k;
-        cin >> n >> k;
-        vector<int> brands(k), costs(k);
-        for (int i = 0; i < k; ++i) {
-            cin >> brands[i];
-        }
-        for (int i = 0; i < k; ++i) {
-            cin >> costs[i];
+        int n, m;
+        cin >> n >> m;
+        vector<int> brands(m);
+        vector<int> prices(m);
+        
+        for (int i = 0; i < m; ++i) {
+            cin >> brands[i] >> prices[i];
         }
         
-        cout << maxEarnings(n, k, brands, costs) << endl;
+        cout << maxEarnings(n, m, brands, prices) << endl;
     }
+    
     return 0;
 }
