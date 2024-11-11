@@ -1,32 +1,33 @@
 #include <iostream>
 #include <vector>
+
 using namespace std;
 
-int main() {
-    vector<int> baskets = {3, 0, 5, 0, 7};  // Example basket counts for the 5 children
-    vector<int> result;
-
-    // Move baskets with balls to the result vector
-    for (int basket : baskets) {
-        if (basket > 0) {
-            result.push_back(basket);
+int minOperations(vector<int>& jewels) {
+    int oddCount = 0, evenCount = 0;
+    for (int power : jewels) {
+        if (power % 2 == 0) {
+            evenCount++;
+        } else {
+            oddCount++;
         }
     }
-
-    // Add empty baskets to the end
-    for (int basket : baskets) {
-        if (basket == 0) {
-            result.push_back(basket);
-        }
-    }
-
-    // Output the result
-    cout << "Baskets arranged: ";
-    for (int balls : result) {
-        cout << balls << " ";
-    }
-    cout << endl;
-
-    return 0;
+    // The minimum number of operations needed to make all elements have the same parity
+    // is the minimum of converting all to even or all to odd
+    return min(oddCount, evenCount);
 }
 
+int main() {
+    int t;
+    cin >> t;
+    while (t--) {
+        int n;
+        cin >> n;
+        vector<int> jewels(n);
+        for (int i = 0; i < n; ++i) {
+            cin >> jewels[i];
+        }
+        cout << minOperations(jewels) << endl;
+    }
+    return 0;
+}
