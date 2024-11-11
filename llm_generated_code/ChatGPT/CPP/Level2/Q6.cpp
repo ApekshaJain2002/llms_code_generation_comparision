@@ -1,35 +1,56 @@
 #include <iostream>
 #include <vector>
-#include <sstream>
+#include <algorithm>
 using namespace std;
 
-string reverseSpell(string spell) {
-    vector<string> words;
-    stringstream ss(spell);
-    string word;
+int find_liars(vector<int>& claims) {
+    int n = claims.size();
+    
+    // Sort the claims
+    sort(claims.begin(), claims.end());
 
-    // Split the spell into words
-    while (ss >> word) {
-        words.push_back(word);
+    for (int liars = 0; liars <= n; ++liars) {
+        int count = 0;
+        for (int claim : claims) {
+            if (claim >= liars) {
+                count++;
+            }
+        }
+        if (count == liars) {
+            return liars;
+        }
     }
-
-    // Reverse the order of words
-    string reversedSpell;
-    for (int i = words.size() - 1; i >= 0; i--) {
-        reversedSpell += words[i];
-        if (i != 0) reversedSpell += " ";  // Add space between words
-    }
-
-    return reversedSpell;
+    
+    return -1;  // Contradiction
 }
 
 int main() {
-    string spell = "abracadabra alohomora expelliarmus";  // Example spell words
-
-    string reversedSpell = reverseSpell(spell);
-
-    cout << "Reversed spell: " << reversedSpell << endl;
-
+    int t;
+    cin >> t;
+    vector<int> results;
+    
+    while (t--) {
+        int n;
+        cin >> n;
+        vector<int> claims(n);
+        for (int i = 0; i < n; ++i) {
+            cin >> claims[i];
+        }
+        int result = find_liars(claims);
+        if (result != -1) {
+            results.push_back(result);
+        } else {
+            results.push_back(-1); // Representing "Contradiction"
+        }
+    }
+    
+    for (int result : results) {
+        if (result == -1) {
+            cout << "Contradiction" << endl;
+        } else {
+            cout << result << endl;
+        }
+    }
+    
     return 0;
 }
-
