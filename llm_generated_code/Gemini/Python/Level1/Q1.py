@@ -1,28 +1,25 @@
-def max_revenue(n, k, brands, costs):
-    # Sort bottles by cost-to-brand ratio in descending order
-    bottles = sorted(zip(brands, costs), key=lambda x: x[1] / x[0], reverse=True)
+def max_revenue(brands, shelves):
+    n = len(brands)
+    dp = [[0] * (shelves + 1) for _ in range(n + 1)]
 
-    # Initialize a list to track the number of bottles of each brand on each shelf
-    shelf_counts = [0] * n
+    for i in range(1, n + 1):
+        for j in range(1, shelves + 1):
+            dp[i][j] = max(dp[i - 1][j], dp[i - 1][j - 1] + brands[i - 1][1] * max(0, j - 1))
 
-    total_revenue = 0
-    for brand, cost in bottles:
-        # Find the first available shelf for this brand
-        for i in range(n):
-            if shelf_counts[i] == 0 or shelf_counts[i] == brand:
-                shelf_counts[i] = brand
-                total_revenue += cost
-                break
+    return dp[n][shelves]
 
-    return total_revenue
-
-# Read the number of test cases
+# Input:
 t = int(input())
-
 for _ in range(t):
-    n, k = map(int, input().split())
-    brands = list(map(int, input().split()))
-    costs = list(map(int, input().split()))
+    n, shelves = map(int, input().split())
+    brands = []
+    for _ in range(n):
+        brand, price = map(int, input().split())
+        brands.append((brand, price))
 
-    result = max_revenue(n, k, brands, costs)
-    print(result)
+    # Sort brands by price in descending order
+    brands.sort(key=lambda x: x[1], reverse=True)
+
+    # Calculate maximum revenue
+    max_profit = max_revenue(brands, shelves)
+    print(max_profit)
