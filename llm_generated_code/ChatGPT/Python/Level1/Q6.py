@@ -1,12 +1,33 @@
-def reverse_words(s):
-    # Split the string into a list of words
-    words = s.split()
+def find_liars(claims):
+    n = len(claims)
     
-    # Reverse the list of words
-    reversed_words = words[::-1]
-    
-    # Join the reversed list back into a single string with spaces
-    reversed_string = ' '.join(reversed_words)
-    
-    return reversed_string
+    # Sort the claims
+    claims.sort()
 
+    for liars in range(n + 1):
+        count = 0
+        for claim in claims:
+            if claim >= liars:
+                count += 1
+        if count == liars:
+            return liars
+    
+    return -1  # Contradiction
+
+def main():
+    t = int(input())
+    results = []
+    for _ in range(t):
+        n = int(input())
+        claims = list(map(int, input().split()))
+        result = find_liars(claims)
+        if result != -1:
+            results.append(result)
+        else:
+            results.append("Contradiction")
+    
+    for result in results:
+        print(result)
+
+if __name__ == "__main__":
+    main()
