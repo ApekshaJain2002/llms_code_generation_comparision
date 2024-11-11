@@ -1,32 +1,47 @@
-def sort_marbles(marbles):
+def is_large_number(num):
     """
-    Sorts a list of marbles by color using the Dutch National Flag algorithm.
+    Checks if a number is a large number (all digits between 5 and 9).
 
     Args:
-        marbles: A list of integers representing the colors of the marbles (0 for red, 1 for blue, 2 for green).
+        num: The number to check.
 
     Returns:
-        The sorted list of marbles.
+        True if the number is large, False otherwise.
     """
 
-    low = 0
-    mid = 0
-    high = len(marbles) - 1
+    while num > 0:
+        digit = num % 10
+        if digit < 5 or digit > 9:
+            return False
+        num //= 10
+    return True
 
-    while mid <= high:
-        if marbles[mid] == 0:
-            marbles[low], marbles[mid] = marbles[mid], marbles[low]
-            low += 1
-            mid += 1
-        elif marbles[mid] == 1:
-            mid += 1
+def can_be_sum_of_large_numbers(x):
+    """
+    Checks if a number can be expressed as the sum of two large numbers with the same number of digits.
+
+    Args:
+        x: The number to check.
+
+    Returns:
+        True if x can be expressed as the sum, False otherwise.
+    """
+
+    num_digits = len(str(x))
+
+    # If the first digit is less than 10, it's impossible.
+    if x // 10**(num_digits - 1) < 10:
+        return False
+
+    # If the last digit is greater than 9, it's impossible.
+    return x % 10 <= 9
+
+if __name__ == "__main__":
+    t = int(input())
+
+    for _ in range(t):
+        x = int(input())
+        if can_be_sum_of_large_numbers(x):
+            print("Yes")
         else:
-            marbles[mid], marbles[high] = marbles[high], marbles[mid]
-            high -= 1
-
-    return marbles
-
-# Example usage:
-marbles = [2, 0, 1, 2, 1, 0]
-sorted_marbles = sort_marbles(marbles)
-print("Sorted marbles:", sorted_marbles)
+            print("No")
