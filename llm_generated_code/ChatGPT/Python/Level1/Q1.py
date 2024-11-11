@@ -1,32 +1,43 @@
-def max_earnings(n, k, brands, costs):
+def max_earnings(n, m, brands, prices):
     from collections import defaultdict
+    import heapq
+
+    # Create a dictionary to store the prices of each brand
+    brand_prices = defaultdict(list)
+    for i in range(m):
+        brand_prices[brands[i]].append(prices[i])
     
-    brand_cost_map = defaultdict(list)
+    # Create a list to store the total earnings for each brand
+    max_brand_earnings = []
+    for bp in brand_prices.values():
+        heapq.heapify(bp)
+        max_brand_earnings.append(sum(bp))
     
-    # Group the costs by their brand
-    for i in range(k):
-        brand_cost_map[brands[i]].append(costs[i])
+    # Sort the brand earnings in descending order
+    max_brand_earnings.sort(reverse=True)
     
-    max_earnings = []
+    # Select the top n brands to maximize earnings
+    max_earnings = sum(max_brand_earnings[:n])
     
-    # Find the total cost for each brand and sort
-    for cost_list in brand_cost_map.values():
-        brand_total = sum(cost_list)
-        max_earnings.append(brand_total)
+    return max_earnings
+
+def main():
+    t = int(input())
+    results = []
+    for _ in range(t):
+        n, m = map(int, input().split())
+        brands = []
+        prices = []
+        for _ in range(m):
+            bi, ci = map(int, input().split())
+            brands.append(bi)
+            prices.append(ci)
+        
+        result = max_earnings(n, m, brands, prices)
+        results.append(result)
     
-    # Sort earnings in descending order
-    max_earnings.sort(reverse=True)
-    
-    # Take the top 'n' earnings
-    total_earnings = sum(max_earnings[:n])
-    
-    return total_earnings
+    for res in results:
+        print(res)
 
 if __name__ == "__main__":
-    t = int(input())
-    for _ in range(t):
-        n, k = map(int, input().split())
-        brands = list(map(int, input().split()))
-        costs = list(map(int, input().split()))
-        
-        print(max_earnings(n, k, brands, costs))
+    main()
