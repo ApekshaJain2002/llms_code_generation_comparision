@@ -1,29 +1,70 @@
 #include <iostream>
 #include <vector>
+#include <algorithm>
 
 using namespace std;
 
-void moveZerosToEnd(vector<int>& arr) {
-    int n = arr.size();
-    int j = 0; // Pointer to the next position to fill with non-zero element
+int minOperations(vector<int>& a) {
+    int n = a.size();
+    int evenCount = 0, oddCount = 0;
 
-    for (int i = 0; i < n; ++i) {
-        if (arr[i] != 0) {
-            swap(arr[i], arr[j]);
-            j++;
+    for (int num : a) {
+        if (num % 2 == 0) {
+            evenCount++;
+        } else {
+            oddCount++;
         }
     }
+
+    int targetParity = evenCount > oddCount ? 0 : 1; // 0 for even, 1 for odd
+
+    int operations = 0;
+    while (true) {
+        int minOppositeParity = INT_MAX;
+        int minTargetParity = INT_MAX;
+        int oppositeParityIndex = -1, targetParityIndex = -1;
+
+        for (int i = 0; i < n; i++) {
+            if (a[i] % 2 != targetParity) {
+                if (a[i] < minOppositeParity) {
+                    minOppositeParity = a[i];
+                    oppositeParityIndex = i;
+                }
+            } else {
+                if (a[i] < minTargetParity) {
+                    minTargetParity = a[i];
+                    targetParityIndex = i;
+                }
+            }
+        }
+
+        if (oppositeParityIndex == -1 || targetParityIndex == -1) {
+            break;
+        }
+
+        a[oppositeParityIndex] += a[targetParityIndex];
+        operations++;
+    }
+
+    return operations;
 }
 
 int main() {
-    vector<int> arr = {0, 1, 0, 3, 12};
+    int t;
+    cin >> t;
 
-    moveZerosToEnd(arr);
+    while (t--) {
+        int n;
+        cin >> n;
 
-    for (int num : arr) {
-        cout << num << " ";
+        vector<int> a(n);
+        for (int i = 0; i < n; i++) {
+            cin >> a[i];
+        }
+
+        int result = minOperations(a);
+        cout << result << endl;
     }
-    cout << endl;
 
     return 0;
 }
