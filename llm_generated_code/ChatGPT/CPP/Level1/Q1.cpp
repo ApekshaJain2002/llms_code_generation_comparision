@@ -5,42 +5,48 @@
 
 using namespace std;
 
-long long maxRevenue(int n, vector<int>& brands, vector<int>& prices) {
-    unordered_map<int, long long> brandRevenue;
-    for (int i = 0; i < brands.size(); i++) {
-        brandRevenue[brands[i]] += prices[i];
+long long maxEarnings(int n, int m, vector<int>& brands, vector<int>& prices) {
+    unordered_map<int, vector<int>> brandPrices;
+    
+    for (int i = 0; i < m; ++i) {
+        brandPrices[brands[i]].push_back(prices[i]);
     }
-
-    vector<long long> revenues;
-    for (const auto& pair : brandRevenue) {
-        revenues.push_back(pair.second);
+    
+    vector<long long> maxBrandEarnings;
+    for (auto& bp : brandPrices) {
+        sort(bp.second.begin(), bp.second.end(), greater<int>());
+        long long sum = 0;
+        for (int price : bp.second) {
+            sum += price;
+        }
+        maxBrandEarnings.push_back(sum);
     }
-
-    sort(revenues.rbegin(), revenues.rend());
-
+    
+    sort(maxBrandEarnings.begin(), maxBrandEarnings.end(), greater<long long>());
     long long maxEarnings = 0;
-    for (int i = 0; i < min(n, (int)revenues.size()); i++) {
-        maxEarnings += revenues[i];
+    for (int i = 0; i < n && i < maxBrandEarnings.size(); ++i) {
+        maxEarnings += maxBrandEarnings[i];
     }
-
+    
     return maxEarnings;
 }
 
 int main() {
     int t;
     cin >> t;
-
+    
     while (t--) {
-        int m, n;
-        cin >> m >> n;
-
-        vector<int> brands(m), prices(m);
-        for (int i = 0; i < m; i++) {
+        int n, m;
+        cin >> n >> m;
+        vector<int> brands(m);
+        vector<int> prices(m);
+        
+        for (int i = 0; i < m; ++i) {
             cin >> brands[i] >> prices[i];
         }
-
-        cout << maxRevenue(n, brands, prices) << endl;
+        
+        cout << maxEarnings(n, m, brands, prices) << endl;
     }
-
+    
     return 0;
 }
