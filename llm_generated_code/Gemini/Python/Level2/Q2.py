@@ -1,23 +1,50 @@
-def rearrange_baskets(baskets):
+def min_operations(a):
     """
-    Rearranges a list of baskets, moving empty baskets to the end.
+    Calculates the minimum number of operations to make all elements of the array have the same parity.
 
     Args:
-        baskets: A list of integers, where 0 represents an empty basket and a positive integer represents the number of balls.
+        a: A list of positive integers.
 
     Returns:
-        The rearranged list of baskets.
+        The minimum number of operations.
     """
 
-    write_index = 0
-    for read_index in range(len(baskets)):
-        if baskets[read_index] != 0:
-            baskets[write_index], baskets[read_index] = baskets[read_index], baskets[write_index]
-            write_index += 1
+    even_count = sum(1 for num in a if num % 2 == 0)
+    odd_count = len(a) - even_count
 
-    return baskets
+    target_parity = 0 if even_count > odd_count else 1
 
-# Example usage:
-baskets = [2, 0, 1, 0, 3]
-rearranged_baskets = rearrange_baskets(baskets)
-print("Rearranged baskets:", rearranged_baskets)
+    operations = 0
+    while True:
+        min_opposite_parity = float('inf')
+        min_target_parity = float('inf')
+        opposite_parity_index = -1
+        target_parity_index = -1
+
+        for i, num in enumerate(a):
+            if num % 2 != target_parity:
+                if num < min_opposite_parity:
+                    min_opposite_parity = num
+                    opposite_parity_index = i
+            else:
+                if num < min_target_parity:
+                    min_target_parity = num
+                    target_parity_index = i
+
+        if opposite_parity_index == -1 or target_parity_index == -1:
+            break
+
+        a[opposite_parity_index] += a[target_parity_index]
+        operations += 1
+
+    return operations
+
+if __name__ == "__main__":
+    t = int(input())
+
+    for _ in range(t):
+        n = int(input())
+        a = list(map(int, input().split()))
+
+        result = min_operations(a)
+        print(result)
