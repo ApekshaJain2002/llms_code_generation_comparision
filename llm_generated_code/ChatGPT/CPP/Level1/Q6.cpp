@@ -1,38 +1,47 @@
 #include <iostream>
-#include <sstream>
 #include <vector>
 #include <algorithm>
 using namespace std;
 
-string reverseWords(string s) {
-    stringstream ss(s);
-    string word;
-    vector<string> words;
+// Function to determine the number of liars
+int findLiars(vector<int>& claims) {
+    int n = claims.size();
+    
+    // Sort the claims
+    sort(claims.begin(), claims.end());
 
-    // Split the string by spaces and store words in a vector
-    while (ss >> word) {
-        words.push_back(word);
-    }
-
-    // Reverse the order of words
-    reverse(words.begin(), words.end());
-
-    // Join the words back into a single string
-    string result;
-    for (int i = 0; i < words.size(); i++) {
-        result += words[i];
-        if (i != words.size() - 1) {
-            result += " ";
+    for (int liars = 0; liars <= n; ++liars) {
+        int count = 0;
+        for (int i = 0; i < n; ++i) {
+            if (claims[i] >= liars) {
+                ++count;
+            }
+        }
+        if (count == liars) {
+            return liars;
         }
     }
-
-    return result;
+    
+    return -1; // Contradiction
 }
 
+// Main function to handle multiple test cases
 int main() {
-    string s = "Hello World from ChatGPT";
-    cout << "Original string: " << s << endl;
-    cout << "Reversed words: " << reverseWords(s) << endl;
+    int t;
+    cin >> t;
+    while (t--) {
+        int n;
+        cin >> n;
+        vector<int> claims(n);
+        for (int i = 0; i < n; ++i) {
+            cin >> claims[i];
+        }
+        int result = findLiars(claims);
+        if (result != -1) {
+            cout << result << endl;
+        } else {
+            cout << "Contradiction" << endl;
+        }
+    }
     return 0;
 }
-
