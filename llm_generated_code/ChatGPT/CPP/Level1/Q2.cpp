@@ -1,35 +1,34 @@
 #include <iostream>
 #include <vector>
+#include <algorithm>
+
 using namespace std;
 
-void moveZerosToEnd(vector<int>& arr) {
-    int n = arr.size();
-    int j = 0; // Pointer for the position of the next non-zero element
-
-    // Move all non-zero elements to the front
-    for (int i = 0; i < n; i++) {
-        if (arr[i] != 0) {
-            arr[j] = arr[i];
-            j++;
+int minOperations(vector<int>& a) {
+    int oddCount = 0, evenCount = 0;
+    for (int num : a) {
+        if (num % 2 == 0) {
+            evenCount++;
+        } else {
+            oddCount++;
         }
     }
-
-    // Fill the remaining positions with zeros
-    for (int i = j; i < n; i++) {
-        arr[i] = 0;
-    }
+    // The minimum number of operations needed to make all elements have the same parity
+    // is the minimum of converting all to even or all to odd
+    return min(oddCount, evenCount);
 }
 
 int main() {
-    vector<int> arr = {0, 1, 0, 3, 12}; // Example array
-    moveZerosToEnd(arr);
-
-    cout << "Array after moving zeros to the end: ";
-    for (int num : arr) {
-        cout << num << " ";
+    int t;
+    cin >> t;
+    while (t--) {
+        int n;
+        cin >> n;
+        vector<int> a(n);
+        for (int i = 0; i < n; ++i) {
+            cin >> a[i];
+        }
+        cout << minOperations(a) << endl;
     }
-    cout << endl;
-
     return 0;
 }
-
