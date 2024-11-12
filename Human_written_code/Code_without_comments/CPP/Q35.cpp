@@ -1,27 +1,44 @@
-def main():
-    t = int(input())
-    for _ in range(t):
-        n, f, k = map(int, input().split())
+#include <iostream>
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+{
+    int t;
+    cin>>t;
+    while(t--)
+    {
+        int n, f, k;
+        cin >> n >> f >> k;
+ 
+        vector<int> cubes(n);
+        for (int i = 0; i < n; ++i) {
+            cin >> cubes[i];
+        }
+        int fav = cubes[f-1];
+        sort(cubes.begin(), cubes.end(), greater<int>());
+        bool a=true,b=true;
+        for(int i=0;i<k;i++)
+        {
+            if(cubes[i]==fav)
+            {
+                b=false;
+            }
+        }
+        for(int i=k;i<n;i++)
+        {
+            if(cubes[i]==fav)
+            {
+                a=false;
+            }
+        }
+        if(a==true)
+        cout<<"YES"<<endl;
+        else if(b==true)
+        cout<<"NO"<<endl;
+        else
+        cout<<"MAYBE"<<endl;
         
-        cubes = list(map(int, input().split()))
-        fav = cubes[f - 1]
-        cubes.sort(reverse=True)
-        
-        a, b = True, True
-        for i in range(k):
-            if cubes[i] == fav:
-                b = False
-                
-        for i in range(k, n):
-            if cubes[i] == fav:
-                a = False
-        
-        if a:
-            print("YES")
-        elif b:
-            print("NO")
-        else:
-            print("MAYBE")
-
-if __name__ == "__main__":
-    main()
+    }
+ 
+    return 0;
+}
