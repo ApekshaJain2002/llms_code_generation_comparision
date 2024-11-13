@@ -1,21 +1,17 @@
-def isValid(s: str) -> bool:
-    st = []  
-    for it in s:
-        if it == '(' or it == '{' or it == '[':
-            st.append(it)
-        else:
-            if len(st) == 0:
-                return False
-            ch = st[-1]  
-            st.pop()  
-            if (it == ')' and ch == '(') or (it == ']' and ch == '[') or (it == '}' and ch == '{'):
-                continue
-            else:
-                return False
-    return len(st) == 0
-if __name__ == '__main__':
-    s = "()[{}()]"
-    if isValid(s):
-        print("True")
-    else:
-        print("False")
+def main():
+    t = int(input())
+    for _ in range(t):
+        s = input()
+        
+        cnt = [0, 0]
+        for c in s:
+            cnt[int(c)] += 1
+
+        for i in range(len(s) + 1):
+            if i == len(s) or cnt[1 - int(s[i])] == 0:
+                print(len(s) - i)
+                break
+            cnt[1 - int(s[i])] -= 1
+
+if __name__ == "__main__":
+    main()
