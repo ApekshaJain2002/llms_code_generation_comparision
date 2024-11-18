@@ -1,30 +1,15 @@
-def reverse_words(s):
-    left = 0
-    right = len(s) - 1
-    temp = ""
-    ans = ""
-    while left <= right:
-        ch = s[left]
-        if ch != ' ':
-            temp += ch
-        elif ch == ' ':
-            if ans:
-                ans = temp + " " + ans
-            else:
-                ans = temp
-            temp = ""  
-        left += 1
-    if temp:
-        if ans:
-            ans = temp + " " + ans
-        else:
-            ans = temp
-    return ans
-def main():
-    st = "TUF is great for interview preparation"
-    print("Before reversing words:")
-    print(st)
-    print("After reversing words:")
-    print(reverse_words(st))
-if __name__ == "__main__":
-    main()
+t = int(input())
+for _ in range(t):
+    n = int(input())
+    a = list(map(int, input().split()))
+    flag = False
+    result = -1
+
+    for i in range(n + 1):
+        c = sum(1 for x in a if x > i)
+        if c == i:
+            flag = True
+            result = i
+            break
+
+    print(result if flag else -1)

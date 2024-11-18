@@ -1,21 +1,13 @@
-def sortArray(arr):
-    low = 0
-    mid = 0
-    high = len(arr) - 1
-    while mid <= high:
-        if arr[mid] == 0:
-            arr[low], arr[mid] = arr[mid], arr[low]
-            low += 1
-            mid += 1
-        elif arr[mid] == 1:
-            mid += 1
-        else:
-            arr[mid], arr[high] = arr[high], arr[mid]
-            high -= 1
-n = 6
-arr = [0, 2, 1, 2, 0, 1]
-sortArray(arr)
-print("After sorting:")
-for num in arr:
-    print(num, end=" ")
-print()
+def solve():
+    n = int(input())
+    n = n - n % 10 + (n % 10 + 1) % 10
+    while n > 9:
+        if n % 10 == 0:
+            print("NO")
+            return
+        n //= 10
+    print("YES" if n == 1 else "NO")
+
+t = int(input())
+for _ in range(t):
+    solve()

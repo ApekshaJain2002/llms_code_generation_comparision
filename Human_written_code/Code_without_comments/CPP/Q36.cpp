@@ -1,26 +1,50 @@
-#include <bits/stdc++.h>
+#include <iostream>
+#include<bits/stdc++.h>
 using namespace std;
-
-int solve(string str) {
-    if (str.size() == 0)
-        return 0;
-    int maxans = INT_MIN;
-    for (int i = 0; i < str.length(); i++) {
-        unordered_set<int> set;
-        for (int j = i; j < str.length(); j++) {
-            if (set.find(str[j]) != set.end()) {
-                maxans = max(maxans, j - i);
-                break;
-            }
-            set.insert(str[j]);
+int main()
+{
+    long long t;
+    cin>>t;
+    while(t--)
+    {
+        long long res=0;
+        long long n;
+        cin>>n;
+        long long arr[n];
+        for(int i=0;i<n;i++)
+        {
+            cin>>arr[i];
         }
+        long long cnt=1,ans=0;
+        
+        map<long long,long long> m;
+        for(int i=0;i<n;i++)
+        {
+            m[arr[i]]++;
+        }
+        
+        for(auto it:m)
+        {
+            ans = max(ans,it.second);
+        }
+        
+        while(ans<n)
+        {
+            if(2*ans > n)
+            {
+                res++;
+                res += (n-ans);
+                ans=n;
+            }
+            else
+            {
+                res++;
+                res += ans;
+                ans = 2*ans;
+            }
+        }
+        cout<<res<<endl;
     }
-    return maxans;
+ 
+    
 }
-
-int main() {
-    string str = "takeUforward";
-    cout << "The length of the longest substring without repeating characters is " << solve(str);
-    return 0;
-}
-

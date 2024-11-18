@@ -1,15 +1,25 @@
-def solve(str: str) -> int:
-    if len(str) == 0:
-        return 0
-    maxans = -1
-    for i in range(len(str)):  
-        set = {}
-        for j in range(i, len(str)):
-            if str[j] in set:  
-                maxans = max(maxans, j - i)
-                break
-            set[str[j]] = 1
-    return maxans
+def main():
+    t = int(input())
+    for _ in range(t):
+        res = 0
+        n = int(input())
+        arr = list(map(int, input().split()))
+        
+        count_map = {}
+        for num in arr:
+            count_map[num] = count_map.get(num, 0) + 1
+
+        ans = max(count_map.values())
+        
+        while ans < n:
+            if 2 * ans > n:
+                res += 1 + (n - ans)
+                ans = n
+            else:
+                res += 1 + ans
+                ans *= 2
+
+        print(res)
+
 if __name__ == "__main__":
-    str = "takeUforward"
-    print("The length of the longest substring without repeating characters is", solve(str))
+    main()

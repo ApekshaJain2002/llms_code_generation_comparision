@@ -1,13 +1,12 @@
-def is_balanced(s):
-    stack = []
-    mapping = {')': '(', '}': '{', ']': '['}
+def min_coins(s):
+    n = len(s)
+    if n == 0:
+        return 0
     
-    for char in s:
-        if char in mapping:
-            top_element = stack.pop() if stack else '#'
-            if mapping[char] != top_element:
-                return False
-        else:
-            stack.append(char)
-    
-    return not stack
+    count_ones = s.count('1')
+    return min(count_ones, n - count_ones)
+
+for _ in range(int(input())):
+    s = input()
+    print(min_coins(s))
+

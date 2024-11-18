@@ -1,2 +1,21 @@
-Given an array of integers arr, there is a sliding window of size k which is moving from the very left of the array to the very right. 
-You can only see the k numbers in the window. Each time the sliding window moves right by one position. Return the max sliding window.
+You have n lamps, numbered by integers from 1 to n. Each lamp I has two integer parameters ai and bi.
+
+At each moment each lamp is in one of three states: it may be turned on, turned off, or broken.
+
+Initially all lamps are turned off. In one operation you can select one lamp that is turned off and turn it on (you can't turn on broken lamps). You receive bi points for turning lamp i on. The following happens after each performed operation:
+
+Let's denote the number of lamps that are turned on as x(broken lamps do not count). All lamps i such that ai≤x simultaneously break, whether they were turned on or off.
+
+Please note that broken lamps never count as turned on and that after a turned on lamp breaks, you still keep points received for turning it on.
+
+You can perform an arbitrary number of operations.
+
+Find the maximum number of points you can get.
+
+(for t test cases)
+
+The first line contains a single integer t the number of test cases.
+
+The first line contains a single integer n the number of lamps.
+
+Each of the next n lines contains two integers ai and bi parameters of the i-th lamp.

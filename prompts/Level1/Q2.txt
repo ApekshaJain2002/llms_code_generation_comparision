@@ -1,1 +1,10 @@
-You are given an array of integers, your task is to move all the zeros in the array to the end of the array and move non-negative integers to the front by maintaining their order.
+Given an array a of n positive integers.
+
+In one operation, you can pick any pair of indexes (i,j) such that ai and aj have distinct parity, then replace the smaller one with the sum of them. More formally:
+
+If ai<aj, replace ai with ai+aj;
+Otherwise, replace aj with ai+aj.
+
+Find the minimum number of operations needed to make all elements of the array have the same parity.
+
+(for t test cases)

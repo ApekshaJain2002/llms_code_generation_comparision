@@ -1,16 +1,27 @@
-def longest_increasing_subsequence_length(arr):
-    n = len(arr)
-    temp = [arr[0]]
-    length = 1
-    for i in range(1, n):
-        if arr[i] > temp[-1]:
-            temp.append(arr[i])
-            length += 1
+def main():
+    t = int(input())
+    for _ in range(t):
+        n, f, k = map(int, input().split())
+        
+        cubes = list(map(int, input().split()))
+        fav = cubes[f - 1]
+        cubes.sort(reverse=True)
+        
+        a, b = True, True
+        for i in range(k):
+            if cubes[i] == fav:
+                b = False
+                
+        for i in range(k, n):
+            if cubes[i] == fav:
+                a = False
+        
+        if a:
+            print("YES")
+        elif b:
+            print("NO")
         else:
-            ind = bisect_left(temp, arr[i])
-            temp[ind] = arr[i]
-    return length
+            print("MAYBE")
+
 if __name__ == "__main__":
-    arr = [10, 9, 2, 5, 3, 7, 101, 18]
-    result = longest_increasing_subsequence_length(arr)
-    print("The length of the longest increasing subsequence is", result)
+    main()

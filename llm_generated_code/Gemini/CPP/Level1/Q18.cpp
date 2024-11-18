@@ -1,22 +1,38 @@
 #include <iostream>
 #include <vector>
+#include <algorithm>
 
 using namespace std;
 
-int main() {
-    vector<int> arr = {1, 1, 0, 1, 1, 1};
-    int max_count = 0, curr_count = 0;
+int maxProfit(vector<int>& brands, vector<int>& prices, int shelves) {
+    int n = brands.size();
+    vector<vector<int>> dp(n + 1, vector<int>(shelves + 1, 0));
 
-    for (int i = 0; i < arr.size(); i++) {
-        if (arr[i] == 1) {
-            curr_count++;
-            max_count = max(max_count, curr_count);
-        } else {
-            curr_count = 0;
+    for (int i = 1; i <= n; ++i) {
+        for (int j = 1; j <= shelves; ++j) {
+            dp[i][j] = max(dp[i - 1][j], dp[i - 1][j - 1] + prices[i - 1]);
         }
     }
 
-    cout << max_count << endl;
+    return dp[n][shelves];
+}
+
+int main() {
+    int t;
+    cin >> t;
+
+    while (t--) {
+        int n, shelves;
+        cin >> n >> shelves;
+
+        vector<int> brands(n), prices(n);
+        for (int i = 0; i < n; ++i) {
+            cin >> brands[i] >> prices[i];
+        }
+
+        int maxProfit = maxProfit(prices, shelves);
+        cout << maxProfit << endl;
+    }
 
     return 0;
 }

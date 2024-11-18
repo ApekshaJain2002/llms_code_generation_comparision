@@ -1,3 +1,11 @@
-Given an integer n and an array of integers arr, return the Longest Increasing Subsequence which is Index-wise lexicographically smallest.
-Note - A subsequence S1 is Index-wise lexicographically smaller than a subsequence S2 if in the first position where S1 and S2 differ, subsequence S1 has an element that appears earlier in the array  arr than the corresponding element in S2.
-LIS  of a given sequence is defined as that longest possible subsequence all of whose elements are in increasing order. For example, the length of LIS for {10, 22, 9, 33, 21, 50, 41, 60, 80} is 6 and the LIS is {10, 22, 33, 50, 60, 80}. 
+You have n cubes, each with a number on it, and a favorite cube at position f.
+Arrange the cubes in descending order based on their numbers.
+Remove the top k cubes.
+Determine if the favorite cube will be removed after sorting and removing the cubes.
+For each test case, output:
+
+"YES" if favorite cube will definitely be removed,
+"NO" if favorite cube will definitely not be removed,
+"MAYBE" if it's uncertain.
+
+(For t test cases)

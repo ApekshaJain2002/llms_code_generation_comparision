@@ -1,3 +1,11 @@
-Imagine you're reading a book and come across a particularly long string of letters. You're curious to find the longest part of this string where no letter repeats, as if you're searching for the longest unique phrase within it.
+In a distant land, there is a curious wizard who has discovered a magical array of numbers. The array, called a, has n elements, each holding a unique power level.
 
-Given a string, can you determine the length of the longest stretch of unique characters in a row? This will show the longest sequence you could read without encountering the same letter twice.
+The wizard has a special goal: to make every element in one copy of the array equal so it radiates pure power. But there's a catch—he can only use his magic in two specific ways:
+
+1) Cloning Magic: The wizard can choose any array copy he has and create a new, identical copy of it. This allows him to have multiple versions of the same array, which he can then manipulate.
+
+2) Swapping Spell: The wizard can swap any two elements between any two copies of the array, or within the same copy if he wishes.
+
+The wizard wants to know the fewest number of spells he needs to cast to achieve his goal: a single copy of the array where all elements are the same. Can you help him find the minimum number of operations to reach this enchanted array of identical power levels?
+
+(For t test cases)

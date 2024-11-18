@@ -1,5 +1,17 @@
-Emma is working as a security analyst, monitoring a long list of recorded sensor values represented by an array of numbers, arr. To get insights into the peak activity in any given period, she uses a "sliding window" that captures a subset of the data at a time.
+Once upon a time, in a kingdom where everything ran on the power of enchanted lamps, there lived a wizard who had just been appointed as the Royal Lampkeeper. The king had tasked him with a critical job: to light up as many lamps as possible in the grand palace, as each lit lamp would bring magical energy that could be harnessed for the kingdom’s prosperity.
 
-Emma sets the window to observe k consecutive sensor readings. Starting from the beginning of the data, she shifts the window one position to the right each time, noting the highest value in the current window. She continues this process until the window has moved across all the sensor data.
+The palace had n special lamps lined up in its grand hall, each with a unique charm. Each lamp had two magical inscriptions, a and b, etched onto its base. The a value was a sensitivity level—if too many lamps were already glowing, a lamp with a lower a level would shatter from the sheer energy overflow. The b value, on the other hand, represented the lamp’s magical yield—the amount of power (points) the wizard would receive for successfully lighting it.
 
-Question: Help Emma find the highest sensor reading in each position of the sliding window as it moves across the entire array.
+The wizard’s task was straightforward but challenging. Each lamp started in an inactive state, and he could light one lamp at a time. The wizard would gain points based on the b value of each lamp he lit, but he had to be careful. The more lamps he lit, the closer he came to causing fragile lamps (those with lower a values) to shatter, making them useless forever. Once broken, the lamps couldn’t be lit again, and he’d lose any chance of gaining points from them.
+
+As the wizard pondered his strategy, he realized that maximizing his points wasn’t simply about lighting the lamps with the highest magical yield. He needed to balance his choices, ensuring that he didn’t push the fragile lamps to their limits too quickly. He could stop lighting lamps at any time, but his goal was to amass as much power as possible for the kingdom.
+
+With a keen eye and a strategic mind, the wizard prepared himself. Every decision counted. Would he light the high-yielding lamps early and risk breaking the delicate ones, or would he carefully choose lamps to keep as many intact as possible for later rounds? The fate of the kingdom’s energy supply lay in his hands, and he was ready to illuminate his path to victory.
+
+(for t test cases)
+
+The first line contains a single integer t the number of test cases.
+
+The first line contains a single integer n the number of lamps.
+
+Each of the next n lines contains two integers ai and bi parameters of the i-th lamp.
