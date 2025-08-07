@@ -1,0 +1,880 @@
+[{
+  "_id": {
+    "$oid": "673720d0ddc600755a8c3fef"
+  },
+  "name": "Q2_Parity and Sum",
+  "code": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    int t;\n    cin >> t;\n    while (t--) {\n        int n;\n        cin >> n;\n        vector<int> a(n);\n        for (int i = 0; i < n; i++) {\n            cin >> a[i];\n        }\n\n        int s = -1;\n        vector<int> v;\n        for (int x : a) {\n            if (x % 2 == 0) {\n                v.push_back(x);\n            } else if (x > s) {\n                s = x;\n            }\n        }\n        \n        sort(v.begin(), v.end());\n\n        if (s == -1 || v.empty()) {\n            cout << 0 << endl;\n            continue;\n        }\n\n        int ans = v.size();\n        for (int t : v) {\n            if (t < s) {\n                s += t;\n            } else {\n                ans++;\n                break;\n            }\n        }\n\n        cout << ans << endl;\n    }\n    return 0;\n}",
+  "cyclomaticComplexity": 6,
+  "linesOfCode": 43,
+  "timeComplexity": "O(n log n)",
+  "spaceComplexity": "O(n)"
+},
+{
+  "_id": {
+    "$oid": "67372574ddc600755a8c3ff1"
+  },
+  "name": "Q3_Large Addition",
+  "code": "#include <iostream>\nusing namespace std;\n\n#define ll long long\n\nvoid solve() {\n  ll n; cin >> n;\n  n = n - n % 10 + (n % 10 + 1) % 10;\n  while (n > 9) {\n    if (n % 10 == 0) {\n      cout << \"NO\\n\";\n      return;\n    }\n    n /= 10;\n  }\n  cout << (n == 1 ? \"YES\\n\" : \"NO\\n\");\n}\n\nint main() {\n  ios_base::sync_with_stdio(false); cin.tie(NULL);\n  int t; cin >> t;\n  for (int i = 0; i < t; ++i) solve();\n  return 0;\n}",
+  "cyclomaticComplexity": 3,
+  "linesOfCode": 24,
+  "timeComplexity": "O(t*logn)",
+  "spaceComplexity": "O(1)"
+},
+{
+  "_id": {
+    "$oid": "67372589ddc600755a8c3ff3"
+  },
+  "name": "Q4_Stock Buy And Sell",
+  "code": "#include<bits/stdc++.h>\nusing namespace std;\nint maxProfit(vector<int> &arr) {\n    int maxPro = 0;\n    int minPrice = INT_MAX;\n    for (int i = 0; i < arr.size(); i++) {\n        minPrice = min(minPrice, arr[i]);\n        maxPro = max(maxPro, arr[i] - minPrice);\n    }\n    return maxPro;\n}\nint main() {\n    vector<int> arr = {7, 1, 5, 3, 6, 4};\n    int maxPro = maxProfit(arr);\n    cout << \"Max profit is: \" << maxPro << endl;\n    return 0;\n}",
+  "cyclomaticComplexity": 2,
+  "linesOfCode": 17,
+  "timeComplexity": "O(n)",
+  "spaceComplexity": "O(1)"
+},
+{
+  "_id": {
+    "$oid": "673725a5ddc600755a8c3ff5"
+  },
+  "name": "Q5_Peak element in Array",
+  "code": "#include <bits/stdc++.h>\nusing namespace std;\nint findPeakElement(vector<int> &arr) {\n    int n = arr.size();\n    if (n == 1) return 0;\n    if (arr[0] > arr[1]) return 0;\n    if (arr[n - 1] > arr[n - 2]) return n - 1;\n    int low = 1, high = n - 2;\n    while (low <= high) {\n        int mid = (low + high) / 2;\n        if (arr[mid - 1] < arr[mid] && arr[mid] > arr[mid + 1])\n            return mid;\n        if (arr[mid] > arr[mid - 1]) low = mid + 1;\n        else high = mid - 1;\n    }\n    return -1;\n}\nint main()\n{\n    vector<int> arr = {1, 2, 3, 4, 5, 6, 7, 8, 5, 1};\n    int ans = findPeakElement(arr);\n    cout << \"The peak is at index: \" << ans << \"\\n\";\n    return 0;\n}",
+  "cyclomaticComplexity": 5,
+  "linesOfCode": 24,
+  "timeComplexity": "O(logn)",
+  "spaceComplexity": "O(1)"
+},
+{
+  "_id": {
+    "$oid": "673725d5ddc600755a8c3ff9"
+  },
+  "name": "Q6_Trust Nobody",
+  "code": "#include<bits/stdc++.h>\nusing namespace std;\nint main(){\n    int t,n; cin>>t;\n    while(t--&&cin>>n){\n        int a[n],i,flag=0,c=0;\n        for(int i=0;i<n;i++) cin>>a[i];\n        for(i=0;i<=n;i++){\n            c=0;\n            for(int j=0;j<n;j++) if(a[j]>i) c++;\n            if(c==i){ flag=1; break;}\n        }\n        if(flag) cout<<i<<'\\n';\n        else cout<<-1<<endl;\n    }\n}",
+  "cyclomaticComplexity": 3,
+  "linesOfCode": 12,
+  "timeComplexity": "O(t*n^2)",
+  "spaceComplexity": "O(n)"
+},
+{
+  "_id": {
+    "$oid": "673728c6ddc600755a8c4002"
+  },
+  "name": "Q7_Detect a Cycle in a Linked List",
+  "code": "#include <iostream>\n#include <bits/stdc++.h>\nusing namespace std;\nclass Node {\npublic:\n    int data;        \n    Node* next;      \n    Node(int data1, Node* next1) {\n        data = data1;\n        next = next1;\n    }\n    Node(int data1) {\n        data = data1;\n        next = nullptr;\n    }\n};\nbool detectCycle(Node* head) {\n    Node* slow = head;\n    Node* fast = head;\n    while (fast != nullptr && fast->next != nullptr) {\n        slow = slow->next;\n        fast = fast->next->next;\n        if (slow == fast) {\n            return true;  \n        }\n    }\n    return false;\n}\nint main() {\n    Node* head = new Node(1);\n    Node* second = new Node(2);\n    Node* third = new Node(3);\n    Node* fourth = new Node(4);\n    Node* fifth = new Node(5);\n    head->next = second;\n    second->next = third;\n    third->next = fourth;\n    fourth->next = fifth;\n    fifth->next = third; \n    if (detectCycle(head)) {\n        cout << \"Loop detected in the linked list.\" << endl;\n    } else {\n        cout << \"No loop detected in the linked list.\" << endl;\n    }\n    delete head;\n    delete second;\n    delete third;\n    delete fourth;\n    delete fifth;\n    return 0;\n}",
+  "cyclomaticComplexity": 3,
+  "linesOfCode": 34,
+  "timeComplexity": "O(n)",
+  "spaceComplexity": "O(1)"
+},
+{
+  "_id": {
+    "$oid": "673728c6ddc600755a8c4003"
+  },
+  "name": "Q8_N meetings in one room",
+  "code": "#include <bits/stdc++.h>\nusing namespace std;\nstruct meeting {\n   int start;\n   int end;\n   int pos;\n};\nclass Solution {\n   public:\n      bool static comparator(struct meeting m1, meeting m2) {\n         if (m1.end < m2.end) return true;\n         else if (m1.end > m2.end) return false;\n         else if (m1.pos < m2.pos) return true;\n         return false;\n      }\n   void maxMeetings(int s[], int e[], int n) {\n      struct meeting meet[n];\n      for (int i = 0; i < n; i++) {\n         meet[i].start = s[i], meet[i].end = e[i], meet[i].pos = i + 1;\n      }\n      sort(meet, meet + n, comparator); \n      vector<int> answer;\n      int limit = meet[0].end;\n      answer.push_back(meet[0].pos);\n      for (int i = 1; i < n; i++) {\n         if (meet[i].start > limit) {\n            limit = meet[i].end;\n            answer.push_back(meet[i].pos);\n         }\n      }\n      cout << \"The order in which the meetings will be performed is \" << endl;\n      for (int i = 0; i < answer.size(); i++) {\n         cout << answer[i] << \" \";\n      }\n   }\n};\nint main() {\n   Solution obj;\n   int n = 6;\n   int start[] = {1, 3, 0, 5, 8, 5};\n   int end[] = {2, 4, 5, 7, 9, 9};\n   obj.maxMeetings(start, end, n);\n   return 0;\n}",
+  "cyclomaticComplexity": 4,
+  "linesOfCode": 45,
+  "timeComplexity": "O(nlogn)",
+  "spaceComplexity": "O(n)"
+},
+{
+  "_id": {
+    "$oid": "673728c6ddc600755a8c4004"
+  },
+  "name": "Q9_Fractional Knapsack Problem : Greedy Approach",
+  "code": "#include <bits/stdc++.h>\nusing namespace std;\nstruct Item {\n   int value;\n   int weight;\n};\nclass Solution {\n   public:\n      bool static comp(Item a, Item b) {\n         double r1 = (double) a.value / (double) a.weight;\n         double r2 = (double) b.value / (double) b.weight;\n         return r1 > r2;\n      }\n   double fractionalKnapsack(int W, Item arr[], int n) {\n      sort(arr, arr + n, comp);  \n      int curWeight = 0;\n      double finalvalue = 0.0;\n      for (int i = 0; i < n; i++) {\n         if (curWeight + arr[i].weight <= W) {\n            curWeight += arr[i].weight;\n            finalvalue += arr[i].value;\n         } else {\n            int remain = W - curWeight;\n            finalvalue += (arr[i].value / (double) arr[i].weight) * (double) remain;\n            break; \n         }\n      }\n      return finalvalue;\n   }\n};\nint main() {\n   int n = 3, weight = 50;\n   Item arr[n] = { {100, 20}, {60, 10}, {120, 30} };\n   Solution obj;\n   double ans = obj.fractionalKnapsack(weight, arr, n);\n   cout << \"The maximum value is \" << setprecision(2) << fixed << ans;\n   return 0;\n}",
+  "cyclomaticComplexity": 3,
+  "linesOfCode": 34,
+  "timeComplexity": "O(nlogn)",
+  "spaceComplexity": "O(1)"
+},
+{
+  "_id": {
+    "$oid": "673729a9ddc600755a8c4006"
+  },
+  "name": "Q10_Rotten Oranges",
+  "code": "#include<bits/stdc++.h>\nusing namespace std;\nint orangesRotting(vector<vector<int>>& grid) {\n    if(grid.empty()) return 0;\n    int m = grid.size(), n = grid[0].size(), days = 0, tot = 0, cnt = 0;\n    queue<pair<int, int>> rotten;\n    for(int i = 0; i < m; ++i){\n        for(int j = 0; j < n; ++j){\n            if(grid[i][j] != 0) tot++;  \n            if(grid[i][j] == 2) rotten.push({i, j}); \n        }\n    }\n    int dx[4] = {0, 0, 1, -1};\n    int dy[4] = {1, -1, 0, 0};\n    while(!rotten.empty()){\n        int k = rotten.size();\n        cnt += k;  \n        while(k--){\n            int x = rotten.front().first, y = rotten.front().second;\n            rotten.pop();\n            for(int i = 0; i < 4; ++i){\n                int nx = x + dx[i], ny = y + dy[i];\n                if(nx < 0 || ny < 0 || nx >= m || ny >= n || grid[nx][ny] != 1) continue;\n                grid[nx][ny] = 2;  \n                rotten.push({nx, ny});\n            }\n        }\n        if(!rotten.empty()) days++;  \n    }\n    return tot == cnt ? days : -1;\n}\nint main() {\n    vector<vector<int>> v{ {2,1,1} , {1,1,0} , {0,1,1} };\n    int rotting = orangesRotting(v);\n    cout << \"Minimum Number of Minutes Required: \" << rotting << endl;\n}",
+  "cyclomaticComplexity": 4,
+  "linesOfCode": 47,
+  "timeComplexity": "O(m*n)",
+  "spaceComplexity": "O(m*n)"
+},
+{
+  "_id": {
+    "$oid": "673729a9ddc600755a8c4007"
+  },
+  "name": "Q11_Number of Enclaves",
+  "code": "#include <bits/stdc++.h>\nusing namespace std;\nclass Solution {\n  public:\n    int numberOfEnclaves(vector<vector<int>> &grid) {\n        queue<pair<int,int>> q; \n        int n = grid.size(); \n        int m = grid[0].size(); \n        int vis[n][m] = {0}; \n        for(int i = 0;i<n;i++) {\n            for(int j = 0;j<m;j++) {\n                if(i == 0 || j == 0 || i == n-1 || j == m-1) {\n                    if(grid[i][j] == 1) {\n                        q.push({i, j}); \n                        vis[i][j] = 1; \n                    }\n                }\n            }\n        }\n        int delrow[] = {-1, 0, +1, 0};\n        int delcol[] = {0, +1, +0, -1}; \n        while(!q.empty()) {\n            int row = q.front().first; \n            int col = q.front().second; \n            q.pop(); \n            for(int i = 0;i<4;i++) {\n                int nrow = row + delrow[i];\n                int ncol = col + delcol[i]; \n                if(nrow >=0 && nrow <n && ncol >=0 && ncol < m \n                && vis[nrow][ncol] == 0 && grid[nrow][ncol] == 1) {\n                    q.push({nrow, ncol});\n                    vis[nrow][ncol] = 1; \n                }\n            }\n        }\n        int cnt = 0;\n        for(int i = 0;i<n;i++) {\n            for(int j = 0;j<m;j++) {\n                if(grid[i][j] == 1 & vis[i][j] == 0) \n                    cnt++; \n            }\n        }\n        return cnt; \n    }\n};\nint main() {\n    vector<vector<int>> grid{\n        {0, 0, 0, 0},\n        {1, 0, 1, 0},\n        {0, 1, 1, 0},\n        {0, 0, 0, 0}};\n    Solution obj;\n    cout << obj.numberOfEnclaves(grid) << endl;\n}",
+  "cyclomaticComplexity": 4,
+  "linesOfCode": 42,
+  "timeComplexity": "O(m*n)",
+  "spaceComplexity": "O(m*n)"
+},
+{
+  "_id": {
+    "$oid": "67372a03ddc600755a8c4009"
+  },
+  "name": "Q12_Climbing Stairs",
+  "code": "#include <bits/stdc++.h>\nusing namespace std;\nint main() {\n    int n = 3;\n    int prev2 = 1;\n    int prev = 1;\n    for (int i = 2; i <= n; i++) {\n        int cur_i = prev2 + prev;\n        prev2 = prev;\n        prev = cur_i;\n    }\n    cout << prev;\n    return 0;\n}",
+  "cyclomaticComplexity": 2,
+  "linesOfCode": 11,
+  "timeComplexity": "O(n)",
+  "spaceComplexity": "O(1)"
+},
+{
+  "_id": {
+    "$oid": "67372a03ddc600755a8c400a"
+  },
+  "name": "Q13_House Robber",
+  "code": "#include <bits/stdc++.h>\nusing namespace std;\nlong long int solve(vector<int>& arr) {\n    int n = arr.size();\n    long long int prev = arr[0];\n    long long int prev2 = 0;\n    for (int i = 1; i < n; i++) {\n        long long int pick = arr[i];\n        if (i > 1) pick += prev2;\n        long long int nonPick = prev;\n        long long int cur_i = max(pick, nonPick);\n        prev2 = prev;\n        prev = cur_i;\n    }\n    return prev;\n}\nlong long int robStreet(int n, vector<int>& arr) {\n    vector<int> arr1, arr2;\n    if (n == 1) return arr[0];\n    for (int i = 0; i < n; i++) {\n        if (i != 0) arr1.push_back(arr[i]);\n        if (i != n - 1) arr2.push_back(arr[i]);\n    }\n    long long int ans1 = solve(arr1);\n    long long int ans2 = solve(arr2);\n    return max(ans1, ans2);\n}\nint main() {\n    vector<int> arr {1, 5, 1, 2, 6};\n    int n = arr.size();\n    cout << robStreet(n, arr);\n}",
+  "cyclomaticComplexity": 4,
+  "linesOfCode": 38,
+  "timeComplexity": "O(n)",
+  "spaceComplexity": "O(n)"
+},
+{
+  "_id": {
+    "$oid": "67372a03ddc600755a8c400b"
+  },
+  "name": "Q14_Grid Unique Paths",
+  "code": "#include <bits/stdc++.h>\nusing namespace std;\nint countWays(int m, int n) {\n    vector<int> prev(n, 0);\n    for (int i = 0; i < m; i++) {\n        vector<int> temp(n, 0);\n        for (int j = 0; j < n; j++) {\n            if (i == 0 && j == 0) {\n                temp[j] = 1;\n                continue;\n            }\n            int up = 0;\n            int left = 0;\n            if (i > 0)\n                up = prev[j];\n            if (j > 0)\n                left = temp[j - 1];\n            temp[j] = up + left;\n        }\n        prev = temp;\n    }\n    return prev[n - 1];\n}\nint main() {\n    int m = 3;\n    int n = 2;\n    cout << \"Number of ways to reach (\" << m - 1 << \", \" << n - 1 << \"): \" << countWays(m, n) << endl;\n    return 0;\n}",
+  "cyclomaticComplexity": 6,
+  "linesOfCode": 29,
+  "timeComplexity": "O(n*m)",
+  "spaceComplexity": "O(n)"
+},
+{
+  "_id": {
+    "$oid": "67372a03ddc600755a8c400c"
+  },
+  "name": "Q15_Count frequency of each element in the array",
+  "code": "#include <bits/stdc++.h>\nusing namespace std;\nvoid Frequency(int arr[], int n)\n{\n    unordered_map<int, int> map;\n    for (int i = 0; i < n; i++)\n        map[arr[i]]++;\n    for (auto x : map)\n        cout << x.first << \" \" << x.second << endl;\n}\nint main()\n{\n    int arr[] = {10,5,10,15,10,5};\n    int n = sizeof(arr) / sizeof(arr[0]);\n    Frequency(arr, n);\n    return 0;\n}",
+  "cyclomaticComplexity": 3,
+  "linesOfCode": 17,
+  "timeComplexity": "O(n)",
+  "spaceComplexity": "O(n)"
+},
+{
+  "_id": {
+    "$oid": "67372a03ddc600755a8c400d"
+  },
+  "name": "Q16_Find the missing number in an array",
+  "code": "#include <bits/stdc++.h>\nusing namespace std;\nint missingNumber(vector<int>&a, int N) {\n    int xor1 = 0, xor2 = 0;\n    for (int i = 0; i < N - 1; i++) {\n        xor2 = xor2 ^ a[i];\n        xor1 = xor1 ^ (i + 1);\n    }\n    xor1 = xor1 ^ N;\n    return (xor1 ^ xor2);\n}\nint main()\n{\n    int N = 5;\n    vector<int> a = {1, 2, 4, 5};\n    int ans = missingNumber(a, N);\n    cout << \"The missing number is: \" << ans << endl;\n    return 0;\n}",
+  "cyclomaticComplexity": 2,
+  "linesOfCode": 19,
+  "timeComplexity": "O(n)",
+  "spaceComplexity": "O(1)"
+},
+{
+  "_id": {
+    "$oid": "67372a03ddc600755a8c400e"
+  },
+  "name": "Q17_Maximum Subarray Sum in an Array",
+  "code": "#include <bits/stdc++.h>\nusing namespace std;\nlong long maxSubarraySum(int arr[], int n) {\n    long long maxi = LONG_MIN;\n    long long sum = 0;\n    for (int i = 0; i < n; i++) {\n        sum += arr[i];\n        if (sum > maxi) {\n            maxi = sum;\n        }\n        if (sum < 0) {\n            sum = 0;\n        }\n    }\n    return maxi;\n}\nint main()\n{\n    int arr[] = { -2, 1, -3, 4, -1, 2, 1, -5, 4};\n    int n = sizeof(arr) / sizeof(arr[0]);\n    long long maxSum = maxSubarraySum(arr, n);\n    cout << \"The maximum subarray sum is: \" << maxSum << endl;\n    return 0;\n}",
+  "cyclomaticComplexity": 4,
+  "linesOfCode": 24,
+  "timeComplexity": "O(n)",
+  "spaceComplexity": "O(1)"
+},
+{
+  "_id": {
+    "$oid": "67372a03ddc600755a8c400f"
+  },
+  "name": "Q18_Count Maximum Consecutive One's in the array",
+  "code": "#include <bits/stdc++.h>\nusing namespace std;\nclass Solution {\n  public:\n    int findMaxConsecutiveOnes(vector<int>& nums) {\n        int cnt = 0;\n        int maxi = 0;\n        for (int i = 0; i < nums.size(); i++) {\n            if (nums[i] == 1) {\n                cnt++;\n            } else {\n                cnt = 0;\n            }\n            maxi = max(maxi, cnt);\n        }\n        return maxi;\n    }\n};\nint main() {\n    vector<int> nums = {1, 1, 0, 1, 1, 1};\n    Solution obj;\n    int ans = obj.findMaxConsecutiveOnes(nums);\n    cout << \"The maximum consecutive 1's are \" << ans;\n    return 0;\n}",
+  "cyclomaticComplexity": 3,
+  "linesOfCode": 25,
+  "timeComplexity": "O(n)",
+  "spaceComplexity": "O(1)"
+},
+{
+  "_id": {
+    "$oid": "67372a03ddc600755a8c4010"
+  },
+  "name": "Q19_Check if two Strings are anagrams of each other",
+  "code": "#include <iostream>\n#include <algorithm>\nusing namespace std;\nbool CheckAnagrams(string str1, string str2)\n{\n  if (str1.length() != str2.length())\n    return false;\n  sort(str1.begin(), str1.end());\n  sort(str2.begin(), str2.end());\n  for (int i = 0; i < str1.length(); i++)\n  {\n    if (str1[i] != str2[i])\n      return false;\n  }\n  return true;\n}\nint main()\n{\n  string Str1 = \"INTEGER\";\n  string Str2 = \"TEGERNI\";\n  if(CheckAnagrams(Str1, Str2))\n  cout << \"True\" << endl;\n  else\n  cout << \"False\" << endl;\n  return 0;\n}",
+  "cyclomaticComplexity": 4,
+  "linesOfCode": 16,
+  "timeComplexity": "O(n log n)",
+  "spaceComplexity": "O(1)"
+},
+{
+  "_id": {
+    "$oid": "67372a49ddc600755a8c4012"
+  },
+  "name": "Q20_Implement Pow(x,n)",
+  "code": "#include<bits/stdc++.h>\nusing namespace std;\ndouble myPow(double x, int n) {\n  double ans = 1.0;  \n  long long nn = n;  \n  if (nn < 0) nn = -1 * nn;  \n  while (nn) {\n    if (nn % 2) {\n      ans = ans * x;  \n      nn = nn - 1;    \n    } else {\n      x = x * x;      \n      nn = nn / 2;    \n    }\n  }\n  if (n < 0) ans = 1.0 / ans;  \n  return ans;  \n}\nint main() {\n  cout << myPow(2, 10) << endl;  \n}",
+  "cyclomaticComplexity": 5,
+  "linesOfCode": 21,
+  "timeComplexity": "O(logn)",
+  "spaceComplexity": "O(1)"
+},
+{
+  "_id": {
+    "$oid": "67372a49ddc600755a8c4013"
+  },
+  "name": "Q21_Dubstep",
+  "code": "#include <iostream>\nusing namespace std;\n\nint main() {\n    string s;\n    int flag = 1;\n    cin >> s;\n\n    for (int i = 0; i < s.size(); i++) {\n        if (s[i] == 'W' && s[i+1] == 'U' && s[i+2] == 'B') {\n            i += 2;\n            if (!flag) {\n                cout << \" \";\n            }\n            continue;\n        } else {\n            flag = 0;\n            cout << s[i];\n        }\n    }\n\n    return 0;\n}",
+  "cyclomaticComplexity": 4,
+  "linesOfCode": 20,
+  "timeComplexity": "O(n)",
+  "spaceComplexity": "O(1)"
+},
+{
+  "_id": {
+    "$oid": "67372a49ddc600755a8c4014"
+  },
+  "name": "Q22_Burenka Plays with Fractions",
+  "code": "#include <iostream>\nusing namespace std;\n\nvoid solve() {\n    long long a, b, c, d;\n    cin >> a >> b >> c >> d;\n    long long x = a * d, y = b * c;\n\n    if (x == y)\n        cout << \"0\\n\";\n    else if ((y != 0 && x % y == 0) || (x != 0 && y % x == 0))\n        cout << \"1\\n\";\n    else\n        cout << \"2\\n\";\n}\n\nint main() {\n    ios_base::sync_with_stdio(false);\n    cin.tie(nullptr);\n\n    int t;\n    cin >> t;\n    while (t--)\n        solve();\n}",
+  "cyclomaticComplexity": 4,
+  "linesOfCode": 24,
+  "timeComplexity": "O(1)",
+  "spaceComplexity": "O(1)"
+},
+{
+  "_id": {
+    "$oid": "67372a49ddc600755a8c4015"
+  },
+  "name": "Q23_Postcards and photos",
+  "code": "#include <iostream>\n#include <string>\n\nusing namespace std;\n\nint main() {\n    string s;\n    cin >> s;\n    int result = 0, count = 1;\n\n    for (size_t i = 1; i < s.length(); ++i) {\n        if (s[i] == s[i - 1]) {\n            count += 1;\n        } else {\n            result += (count + 4) / 5;\n            count = 1;\n        }\n    }\n\n    result += (count + 4) / 5;\n    cout << result << endl;\n    return 0;\n}",
+  "cyclomaticComplexity": 3,
+  "linesOfCode": 19,
+  "timeComplexity": "O(n)",
+  "spaceComplexity": "O(1)"
+},
+{
+  "_id": {
+    "$oid": "67372a49ddc600755a8c4016"
+  },
+  "name": "Q24_Football",
+  "code": "#include <iostream>\n#include <string>\n\nusing namespace std;\n\nint main() {\n    string s;\n    int d = 1;\n\n    cin >> s;\n\n    for (int i = 0; i < s.length() - 1; ++i) {\n        if (d >= 7)\n            break;\n\n        if (s[i] == s[i + 1]) {\n            d++;\n        } else {\n            d = 1;\n        }\n    }\n\n    cout << (d >= 7 ? \"YES\" : \"NO\");\n\n    return 0;\n}",
+  "cyclomaticComplexity": 4,
+  "linesOfCode": 19,
+  "timeComplexity": "O(n)",
+  "spaceComplexity": "O(1)"
+},
+{
+  "_id": {
+    "$oid": "67372a49ddc600755a8c4017"
+  },
+  "name": "Q25_Start Up",
+  "code": "#include <iostream>\n#include <algorithm>\nusing namespace std;\n\nint main() {\n    ios_base::sync_with_stdio(false);\n    cin.tie(nullptr);\n\n    string s, t;\n    cin >> s;\n    bool isSymmetric = true;\n\n    for (char c : s) {\n        if (c != 'A' && c != 'H' && c != 'I' && c != 'M' && c != 'O' && c != 'T' && c != 'U' && c != 'V' && c != 'W' && c != 'X' && c != 'Y') {\n            isSymmetric = false;\n            break;\n        }\n    }\n\n    if (isSymmetric) {\n        t = s;\n        reverse(t.begin(), t.end());\n        isSymmetric = (s == t);\n    }\n\n    cout << (isSymmetric ? \"YES\" : \"NO\") << endl;\n    return 0;\n}",
+  "cyclomaticComplexity": 4,
+  "linesOfCode": 23,
+  "timeComplexity": "O(n)",
+  "spaceComplexity": "O(n)"
+},
+{
+  "_id": {
+    "$oid": "67372ab9ddc600755a8c4019"
+  },
+  "name": "Q26_Select Three Sticks",
+  "code": "#include <iostream>\n#include <algorithm>\n#include <climits>\nusing namespace std;\n\nint main() {\n    int t, n;\n    cin >> t;\n\n    while (t--) {\n        cin >> n;\n        int a[n];\n        \n        for (int i = 0; i < n; i++)\n            cin >> a[i];\n        \n        sort(a, a + n);\n        \n        int ans = INT_MAX;\n        \n        for (int i = 2; i < n; i++) {\n            ans = min(ans, a[i] - a[i - 2]);\n        }\n        \n        cout << ans << endl;\n    }\n\n    return 0;\n}",
+  "cyclomaticComplexity": 4,
+  "linesOfCode": 21,
+  "timeComplexity": "O(nlogn)",
+  "spaceComplexity": "O(1)"
+},
+{
+  "_id": {
+    "$oid": "67372ab9ddc600755a8c401a"
+  },
+  "name": "Q27_Young Physicist",
+  "code": "#include <iostream>\nusing namespace std;\n\nint main() {\n    int n;\n    cin >> n;\n    int x[n], y[n], z[n];\n\n    for (int i = 0; i < n; i++) {\n        cin >> x[i] >> y[i] >> z[i];\n    }\n\n    int sum1 = 0, sum2 = 0, sum3 = 0;\n\n    for (int i = 0; i < n; i++) {\n        sum1 += x[i];\n        sum2 += y[i];\n        sum3 += z[i];\n    }\n\n    if (sum1 == 0 && sum2 == 0 && sum3 == 0)\n        cout << \"YES\" << endl;\n    else\n        cout << \"NO\" << endl;\n\n    return 0;\n}",
+  "cyclomaticComplexity": 4,
+  "linesOfCode": 21,
+  "timeComplexity": "O(n)",
+  "spaceComplexity": "O(n)"
+},
+{
+  "_id": {
+    "$oid": "67372ab9ddc600755a8c401b"
+  },
+  "name": "Q28_Word",
+  "code": "int main() { return 0; }",
+  "cyclomaticComplexity": 9,
+  "linesOfCode": 29,
+  "timeComplexity": "O(n)",
+  "spaceComplexity": "O(n)"
+},
+{
+  "_id": {
+    "$oid": "67372ab9ddc600755a8c401c"
+  },
+  "name": "Q29_Increasing",
+  "code": "#include <iostream>\n#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    int t, n;\n    cin >> t;\n\n    while (t--) {\n        cin >> n;\n        int arr[n];\n        \n        for (int i = 0; i < n; i++) {\n            cin >> arr[i];\n        }\n\n        int ct = 0;\n        sort(arr, arr + n);\n\n        for (int i = 0; i < n - 1; i++) {\n            if (arr[i] == arr[i + 1]) {\n                cout << \"NO\" << endl;\n                break;\n            } else {\n                ct++;\n            }\n        }\n\n        if (ct == n - 1)\n            cout << \"YES\" << endl;\n    }\n\n    return 0;\n}",
+  "cyclomaticComplexity": 6,
+  "linesOfCode": 28,
+  "timeComplexity": "O(nlogn)",
+  "spaceComplexity": "O(n)"
+},
+{
+  "_id": {
+    "$oid": "67372ab9ddc600755a8c401d"
+  },
+  "name": "Q30_Garland",
+  "code": "#include <iostream>\n#include <map>\nusing namespace std;\n\nint main() {\n    int t;\n    cin >> t;\n\n    while (t--) {\n        map<char, int> m;\n        string n;\n        cin >> n;\n        int ans = 0;\n\n        for (int i = 0; i < n.length(); i++) {\n            m[n[i]]++;\n        }\n\n        if (m.size() == 4)\n            cout << 4 << endl;\n        else if (m.size() == 1)\n            cout << -1 << endl;\n        else if (m.size() == 3)\n            cout << 4 << endl;\n        else {\n            for (auto it : m) {\n                if (it.second == 3) {\n                    cout << 6 << endl;\n                    ans = 1;\n                    break;\n                }\n            }\n            if (ans == 0)\n                cout << 4 << endl;\n        }\n    }\n\n    return 0;\n}",
+  "cyclomaticComplexity": 9,
+  "linesOfCode": 34,
+  "timeComplexity": "O(nlogn)",
+  "spaceComplexity": "O(n)"
+},
+{
+  "_id": {
+    "$oid": "67372ab9ddc600755a8c401e"
+  },
+  "name": "Q31_Wallet Exchange",
+  "code": "#include <iostream>\nusing namespace std;\n\nint main() {\n    int t;\n    cin >> t;\n\n    while (t--) {\n        int a, b;\n        cin >> a >> b;\n\n        if ((a + b) % 2 == 0)\n            cout << \"Bob\" << endl;\n        else\n            cout << \"Alice\" << endl;\n    }\n\n    return 0;\n}",
+  "cyclomaticComplexity": 3,
+  "linesOfCode": 13,
+  "timeComplexity": "O(n)",
+  "spaceComplexity": "O(1)"
+},
+{
+  "_id": {
+    "$oid": "67372ab9ddc600755a8c401f"
+  },
+  "name": "Q32_Is It a Cat?",
+  "code": "#include <iostream>\nusing namespace std;\n\nint main() {\n    int t;\n    cin >> t;\n\n    while (t--) {\n        int n;\n        cin >> n;\n        string str = \"meow\", str1 = \"MEOW\";\n        string s;\n        cin >> s;\n        int cnt = 0;\n\n        if ((s[0] != 'm' && s[0] != 'M') || (s[n - 1] != 'w' && s[n - 1] != 'W')) {\n            cnt = -1;\n        } else {\n            int j = 0;\n\n            for (int i = 1; i < n; i++) {\n                if (s[i] != str[j] && s[i] != str1[j]) {\n                    j++;\n                }\n\n                if (s[i] == str[j] || s[i] == str1[j]) {\n                    continue;\n                } else {\n                    cnt = -1;\n                }\n            }\n        }\n\n        if (cnt == -1)\n            cout << \"NO\" << endl;\n        else\n            cout << \"YES\" << endl;\n    }\n}",
+  "cyclomaticComplexity": 6,
+  "linesOfCode": 14,
+  "timeComplexity": "O(n)",
+  "spaceComplexity": "O(1)"
+},
+{
+  "_id": {
+    "$oid": "67372ab9ddc600755a8c4020"
+  },
+  "name": "Q33_Buy and Sell Stock - III",
+  "code": "#include <bits/stdc++.h>\nusing namespace std;\n\nint maxProfit(vector<int>& Arr, int n) {\n    vector<vector<vector<int>>> dp(n + 1, vector<vector<int>>(2, vector<int>(3, 0)));\n\n    for (int ind = n - 1; ind >= 0; ind--) {\n        for (int buy = 0; buy <= 1; buy++) {\n            for (int cap = 1; cap <= 2; cap++) {\n                if (buy == 0) {\n                    dp[ind][buy][cap] = max(0 + dp[ind + 1][0][cap],\n                                           -Arr[ind] + dp[ind + 1][1][cap]);\n                }\n\n                if (buy == 1) {\n                    dp[ind][buy][cap] = max(0 + dp[ind + 1][1][cap],\n                                           Arr[ind] + dp[ind + 1][0][cap - 1]);\n                }\n            }\n        }\n    }\n\n    return dp[0][0][2];\n}\n\nint main() {\n    vector<int> prices = {3, 3, 5, 0, 0, 3, 1, 4};\n    int n = prices.size();\n\n    cout << \"The maximum profit that can be generated is \" << maxProfit(prices, n);\n\n    return 0;\n}",
+  "cyclomaticComplexity": 5,
+  "linesOfCode": 29,
+  "timeComplexity": "O(n)",
+  "spaceComplexity": "O(n)"
+},
+{
+  "_id": {
+    "$oid": "67372b04ddc600755a8c4022"
+  },
+  "name": "Q34_Buy and Sell Stocks With Transaction Fees",
+  "code": "#include <bits/stdc++.h>\nusing namespace std;\n\nint maximumProfit(int n, int fee, vector<int>& Arr) {\n    if (n == 0) return 0;\n\n    vector<vector<int>> dp(n + 1, vector<int>(2, 0));\n\n    for (int ind = n - 1; ind >= 0; ind--) {\n        for (int buy = 0; buy <= 1; buy++) {\n            int profit;\n\n            if (buy == 0) {\n                profit = max(0 + dp[ind + 1][0], -Arr[ind] + dp[ind + 1][1]);\n            }\n\n            if (buy == 1) {\n                profit = max(0 + dp[ind + 1][1], Arr[ind] - fee + dp[ind + 1][0]);\n            }\n\n            dp[ind][buy] = profit;\n        }\n    }\n\n    return dp[0][0];\n}\n\nint main() {\n    vector<int> prices = {1, 3, 2, 8, 4, 9};\n    int n = prices.size();\n    int fee = 2;\n\n    cout << \"The maximum profit that can be generated is \" << maximumProfit(n, fee, prices) << endl;\n    return 0;\n}",
+  "cyclomaticComplexity": 6,
+  "linesOfCode": 21,
+  "timeComplexity": "O(n)",
+  "spaceComplexity": "O(1)"
+},
+{
+  "_id": {
+    "$oid": "67372b04ddc600755a8c4023"
+  },
+  "name": "Q35_Choosing Cubes",
+  "code": "#include <iostream>\n#include<bits/stdc++.h>\nusing namespace std;\nint main()\n{\n    int t;\n    cin>>t;\n    while(t--)\n    {\n        int n, f, k;\n        cin >> n >> f >> k;\n\n        vector<int> cubes(n);\n        for (int i = 0; i < n; ++i) {\n            cin >> cubes[i];\n        }\n        int fav = cubes[f-1];\n        sort(cubes.begin(), cubes.end(), greater<int>());\n        bool a=true,b=true;\n        for(int i=0;i<k;i++)\n        {\n            if(cubes[i]==fav)\n            {\n                b=false;\n            }\n        }\n        for(int i=k;i<n;i++)\n        {\n            if(cubes[i]==fav)\n            {\n                a=false;\n            }\n        }\n        if(a==true)\n        cout<<\"YES\"<<endl;\n        else if(b==true)\n        cout<<\"NO\"<<endl;\n        else\n        cout<<\"MAYBE\"<<endl;\n    }\n\n    return 0;\n}",
+  "cyclomaticComplexity": 5,
+  "linesOfCode": 23,
+  "timeComplexity": "O(nlogn)",
+  "spaceComplexity": "O(n)"
+},
+{
+  "_id": {
+    "$oid": "67372b04ddc600755a8c4024"
+  },
+  "name": "Q36_Array Cloning Technique",
+  "code": "#include <iostream>\n#include<bits/stdc++.h>\nusing namespace std;\nint main()\n{\n    long long t;\n    cin>>t;\n    while(t--)\n    {\n        long long res=0;\n        long long n;\n        cin>>n;\n        long long arr[n];\n        for(int i=0;i<n;i++)\n        {\n            cin>>arr[i];\n        }\n        long long cnt=1,ans=0;\n\n        map<long long,long long> m;\n        for(int i=0;i<n;i++)\n        {\n            m[arr[i]]++;\n        }\n\n        for(auto it:m)\n        {\n            ans = max(ans,it.second);\n        }\n\n        while(ans<n)\n        {\n            if(2*ans > n)\n            {\n                res++;\n                res += (n-ans);\n                ans=n;\n            }\n            else\n            {\n                res++;\n                res += ans;\n                ans = 2*ans;\n            }\n        }\n        cout<<res<<endl;\n    }\n\n}",
+  "cyclomaticComplexity": 7,
+  "linesOfCode": 32,
+  "timeComplexity": "O(n)",
+  "spaceComplexity": "O(n)"
+},
+{
+  "_id": {
+    "$oid": "67372b04ddc600755a8c4025"
+  },
+  "name": "Q37_Swap and Delete",
+  "code": "#include <iostream>\n#include <string>\n#include <vector>\nusing namespace std;\n\nint main() {\n    int t;\n    cin >> t;\n\n    while (t--) {\n        string s;\n        cin >> s;\n\n        vector<int> cnt(2, 0);\n        for (char c : s) {\n            cnt[c - '0']++;\n        }\n\n        for (int i = 0; i <= s.size(); i++) {\n            if (i == s.size() || cnt[1 - (s[i] - '0')] == 0) {\n                cout << s.size() - i << endl;\n                break;\n            }\n            cnt[1 - (s[i] - '0')]--;\n        }\n    }\n\n    return 0;\n}",
+  "cyclomaticComplexity": 8,
+  "linesOfCode": 34,
+  "timeComplexity": "O(nlogn)",
+  "spaceComplexity": "O(n)"
+},
+{
+  "_id": {
+    "$oid": "67372b04ddc600755a8c4026"
+  },
+  "name": "Q38_Lamps",
+  "code": "#include <cstdio>\n#include <algorithm>\n#include <vector>\ntypedef long long ll;\n\nbool cmp(std::pair<ll, ll> a, std::pair<ll, ll> b){\n    if(a.first != b.first){return a.first < b.first;}\n    return a.second > b.second;\n}\n\nint main(){\n\n    ll t; scanf(\"%lld\", &t);\n    while(t--){\n        ll n; scanf(\"%lld\", &n);\n        std::vector<std::pair<ll, ll> > v(n);\n        for(ll p = 0; p < n; p++){scanf(\"%lld %lld\", &v[p].first, &v[p].second);}\n        sort(v.begin(), v.end(), cmp);\n\n        ll idx(0), cnt(0), total(0);\n        for(ll p = 0; p < n; p++){\n            if(p < idx){continue;}\n            total += v[p].second;\n            ++cnt;\n            while(idx < n && v[idx].first <= cnt){++idx;}\n            cnt = p - idx + 1; cnt = (cnt > 0 ? cnt : 0);\n        }\n\n        printf(\"%lld\\n\", total);\n    }\n}",
+  "cyclomaticComplexity": 5,
+  "linesOfCode": 20,
+  "timeComplexity": "O(n)",
+  "spaceComplexity": "O(1)"
+},
+{
+  "_id": {
+    "$oid": "67372b04ddc600755a8c4027"
+  },
+  "name": "Q39_Binary Cafe",
+  "code": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint32_t main() {\n    int t;\n    cin >> t;\n    while (t--) {\n        int n, k;\n        cin >> n >> k;\n        k = min(k, 30);\n        cout << min(n, (1 << k) - 1) + 1 << \"\\n\";\n    }\n    return 0;\n}",
+  "cyclomaticComplexity": 3,
+  "linesOfCode": 18,
+  "timeComplexity": "O(n)",
+  "spaceComplexity": "O(n)"
+},
+{
+  "_id": {
+    "$oid": "67372b04ddc600755a8c4028"
+  },
+  "name": "Q40_All are Same",
+  "code": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main()\n{\n\tint t;\n\tcin >> t;\n\n\twhile (t--)\n\t{\n\t\tint n;\n\t\tcin >> n;\n\n\t\tvector<int> a(n);\n\t\tfor (int i = 0; i < n; i++) cin >> a[i];\n\n\t\tbool inf = true;\n\t\tint minval = a[0];\n\n\t\tfor (int i = 1; i < n; i++)\n\t{\n\t\t\tif (a[i] != a[0])\n\t\t\t{\n\t\t\t\tinf = false;\n\t\t\t\tbreak;\n\t\t\t}\n\t\t\tminval = min(minval, a[i]);\n\t}\n\n\t\tif (inf)\n\t{\n\t\t\tcout << \"-1\\n\";\n\t\t\tcontinue;\n\t}\n\n\t\tsort(a.begin(), a.end());\n\n\t\tcout << a[n - 1] - minval << endl;\n\t}\n\n\treturn 0;\n}",
+  "cyclomaticComplexity": 4,
+  "linesOfCode": 28,
+  "timeComplexity": "O(nlogn)",
+  "spaceComplexity": "O(n)"
+},
+{
+  "_id": {
+    "$oid": "67372e46ddc600755a8c402a"
+  },
+  "name": "Q1_StartUp",
+  "code": "def solve():\n    n, k = map(int, input().split())\n    brand_cost = [0] * k\n    for _ in range(k):\n        b, c = map(int, input().split())\n        brand_cost[b - 1] += c\n    brand_cost.sort(reverse=True)\n    ans = sum(brand_cost[i] for i in range(min(n, k)))\n    print(ans)\n\nt = int(input())\nfor _ in range(t):\n    solve()",
+  "cyclomaticComplexity": 2,
+  "linesOfCode": 12,
+  "timeComplexity": "O(klogk)",
+  "spaceComplexity": "O(k)"
+},
+{
+  "_id": {
+    "$oid": "67372e46ddc600755a8c402b"
+  },
+  "name": "Q2_Parity and Sum",
+  "code": "t = int(input())\nfor _ in range(t):\n    n = int(input())\n    a = list(map(int, input().split()))\n\n    s = -1\n    v = []\n    for x in a:\n        if x % 2 == 0:\n            v.append(x)\n        elif x > s:\n            s = x\n    v.sort()\n\n    if s == -1 or not v:\n        print(0)\n        continue\n    \n    ans = len(v)\n    for t in v:\n        if t < s:\n            s += t\n        else:\n            ans += 1\n            break\n\n    print(ans)",
+  "cyclomaticComplexity": 7,
+  "linesOfCode": 23,
+  "timeComplexity": "O(t*nlogn)",
+  "spaceComplexity": "O(n)"
+},
+{
+  "_id": {
+    "$oid": "67372e46ddc600755a8c402c"
+  },
+  "name": "Q3_Large Addition",
+  "code": "t = int(input())\nfor _ in range(t):\n    n = int(input())\n    a = list(map(int, input().split()))\n\n    s = -1\n    v = []\n    for x in a:\n        if x % 2 == 0:\n            v.append(x)\n        elif x > s:\n            s = x\n    v.sort()\n\n    if s == -1 or not v:\n        print(0)\n        continue\n    \n    ans = len(v)\n    for t in v:\n        if t < s:\n            s += t\n        else:\n            ans += 1\n            break\n\n    print(ans)",
+  "cyclomaticComplexity": 3,
+  "linesOfCode": 12,
+  "timeComplexity": "O(t*logn)",
+  "spaceComplexity": "O(1)"
+},
+{
+  "_id": {
+    "$oid": "67372e46ddc600755a8c402d"
+  },
+  "name": "Q4_Stock Buy And Sell",
+  "code": "def maxProfit(arr):\n    maxPro = 0\n    minPrice = float('inf')\n    for i in range(len(arr)):\n        minPrice = min(minPrice, arr[i])\n        maxPro = max(maxPro, arr[i] - minPrice)\n    return maxPro\narr = [7, 1, 5, 3, 6, 4]\nmaxPro = maxProfit(arr)\nprint('Max profit is:', maxPro)",
+  "cyclomaticComplexity": 2,
+  "linesOfCode": 6,
+  "timeComplexity": "O(n)",
+  "spaceComplexity": "O(1)"
+},
+{
+  "_id": {
+    "$oid": "67372e46ddc600755a8c402e"
+  },
+  "name": "Q5_Peak element in Array",
+  "code": "def findPeakElement(arr: [int]) -> int:\n    n = len(arr)\n    if n == 1:\n        return 0\n    if arr[0] > arr[1]:\n        return 0\n    if arr[n - 1] > arr[n - 2]:\n        return n - 1\n    low = 1\n    high = n - 2\n    while low <= high:\n        mid = (low + high) // 2\n        if arr[mid - 1] < arr[mid] and arr[mid] > arr[mid + 1]:\n            return mid\n        if arr[mid] > arr[mid - 1]:\n            low = mid + 1\n        else:\n            high = mid - 1\n    return -1\narr = [1, 2, 3, 4, 5, 6, 7, 8, 5, 1]\nans = findPeakElement(arr)\nprint('The peak is at index:', ans)",
+  "cyclomaticComplexity": 3,
+  "linesOfCode": 13,
+  "timeComplexity": "O(logn)",
+  "spaceComplexity": "O(1)"
+},
+{
+  "_id": {
+    "$oid": "67372e46ddc600755a8c402f"
+  },
+  "name": "Q6_Trust Nobody",
+  "code": "t = int(input())\nfor _ in range(t):\n    n = int(input())\n    a = list(map(int, input().split()))\n    flag = False\n    result = -1\n\n    for i in range(n + 1):\n        c = sum(1 for x in a if x > i)\n        if c == i:\n            flag = True\n            result = i\n            break\n\n    print(result if flag else -1)",
+  "cyclomaticComplexity": 3,
+  "linesOfCode": 13,
+  "timeComplexity": "O(t*n^2)",
+  "spaceComplexity": "O(n)"
+},
+{
+  "_id": {
+    "$oid": "67372e46ddc600755a8c4030"
+  },
+  "name": "Q7_Detect a Cycle in a Linked List",
+  "code": "class Node:\n    def __init__(self, data, next_node=None):\n        self.data = data\n        self.next = next_node\n\ndef detect_cycle(head):\n    slow = head\n    fast = head\n    while fast is not None and fast.next is not None:\n        slow = slow.next\n        fast = fast.next.next\n        if slow == fast:\n            return True\n    return False\nif __name__ == '__main__':\n    head = Node(1)\n    second = Node(2)\n    third = Node(3)\n    fourth = Node(4)\n    fifth = Node(5)\n    head.next = second\n    second.next = third\n    third.next = fourth\n    fourth.next = fifth\n    fifth.next = third\n    if detect_cycle(head):\n        print('Loop detected in the linked list.')\n    else:\n        print('No loop detected in the linked list.')",
+  "cyclomaticComplexity": 3,
+  "linesOfCode": 16,
+  "timeComplexity": "O(n)",
+  "spaceComplexity": "O(1)"
+},
+{
+  "_id": {
+    "$oid": "67372e46ddc600755a8c4031"
+  },
+  "name": "Q8_N meetings in one room",
+  "code": "from typing import List\nclass Meeting:\n    def __init__(self, start: int, end: int, pos: int):\n        self.start = start\n        self.end = end\n        self.pos = pos\n\nclass Solution:\n    def maxMeetings(self, s: List[int], e: List[int], n: int) -> None:\n        meetings = [Meeting(s[i], e[i], i + 1) for i in range(n)]\n        meetings.sort(key=lambda x: (x.end, x.pos))\n        answer = []\n        limit = meetings[0].end\n        answer.append(meetings[0].pos)\n        for i in range(1, n):\n            if meetings[i].start > limit:\n                limit = meetings[i].end\n                answer.append(meetings[i].pos)\n        print('The order in which the meetings will be performed is:')\n        for meeting_pos in answer:\n            print(meeting_pos, end=' ')\n\nif __name__ == '__main__':\n    obj = Solution()\n    n = 6\n    start = [1, 3, 0, 5, 8, 5]\n    end = [2, 4, 5, 7, 9, 9]\n    obj.maxMeetings(start, end, n)",
+  "cyclomaticComplexity": 2,
+  "linesOfCode": 19,
+  "timeComplexity": "O(nlogn)",
+  "spaceComplexity": "O(n)"
+},
+{
+  "_id": {
+    "$oid": "67372eceddc600755a8c4033"
+  },
+  "name": "Q9_Fractional Knapsack Problem : Greedy Approach",
+  "code": "class Item:\n    def __init__(self, value: int, weight: int):\n        self.value = value   \n        self.weight = weight \nclass Solution:\n    def fractionalKnapsack(self, W: int, arr: List[Item], n: int) -> float:\n        arr.sort(key=lambda x: x.value / x.weight, reverse=True)\n        curWeight = 0        \n        finalValue = 0.0     \n        for i in range(n):\n            if curWeight + arr[i].weight <= W:\n                curWeight += arr[i].weight  \n                finalValue += arr[i].value  \n            else:\n                remain = W - curWeight  \n                finalValue += arr[i].value / arr[i].weight * remain  \n                break  \n        return finalValue  \nif __name__ == '__main__':\n    n = 3  \n    W = 50 \n    arr = [Item(60, 10), Item(100, 20), Item(120, 30)]\n    obj = Solution()\n    ans = obj.fractionalKnapsack(W, arr, n)\n    print(\"The maximum value is\", ans)",
+  "cyclomaticComplexity": 3,
+  "linesOfCode": 13,
+  "timeComplexity": "O(nlogn)",
+  "spaceComplexity": "O(1)"
+},
+{
+  "_id": {
+    "$oid": "67372eceddc600755a8c4034"
+  },
+  "name": "Q10_Rotten Oranges",
+  "code": "from collections import deque\nfrom typing import List\ndef orangesRotting(grid: List[List[int]]) -> int:\n    if not grid:\n        return 0\n    m = len(grid)\n    n = len(grid[0])\n    days = 0\n    tot = 0\n    cnt = 0\n    rotten = deque()\n    for i in range(m):\n        for j in range(n):\n            if grid[i][j] != 0:\n                tot += 1\n            if grid[i][j] == 2:\n                rotten.append((i, j))\n    dx = [0, 0, 1, -1]\n    dy = [1, -1, 0, 0]\n    while rotten:\n        k = len(rotten)\n        cnt += k\n        for _ in range(k):\n            x, y = rotten.popleft()\n            for i in range(4):\n                nx, ny = x + dx[i], y + dy[i]\n                if 0 <= nx < m and 0 <= ny < n and grid[nx][ny] == 1:\n                    grid[nx][ny] = 2\n                    rotten.append((nx, ny))\n        if rotten:\n            days += 1\n    return days if tot == cnt else -1\nif __name__ == '__main__':\n    v = [[2,1,1], [1,1,0], [0,1,1]]\n    rotting = orangesRotting(v)\n    print(\"Minimum Number of Minutes Required:\", rotting)",
+  "cyclomaticComplexity": 4,
+  "linesOfCode": 28,
+  "timeComplexity": "O(m*n)",
+  "spaceComplexity": "O(m*n)"
+},
+{
+  "_id": {
+    "$oid": "67372eceddc600755a8c4035"
+  },
+  "name": "Q11_Number of Enclaves",
+  "code": "from typing import List\nfrom collections import deque\nclass Solution:\n    def numberOfEnclaves(self, grid: List[List[int]]) -> int:\n        q = deque()  \n        n = len(grid)  \n        m = len(grid[0])  \n        vis = [[0] * m for _ in range(n)]  \n        for i in range(n):\n            for j in range(m):\n                if i == 0 or j == 0 or i == n - 1 or j == m - 1:\n                    if grid[i][j] == 1:\n                        q.append((i, j))\n                        vis[i][j] = 1\n        delrow = [-1, 0, 1, 0]\n        delcol = [0, 1, 0, -1]\n        while q:\n            row, col = q.popleft()\n            for i in range(4):\n                nrow, ncol = row + delrow[i], col + delcol[i]\n                if 0 <= nrow < n and 0 <= ncol < m and not vis[nrow][ncol] and grid[nrow][ncol] == 1:\n                    q.append((nrow, ncol))\n                    vis[nrow][ncol] = 1\n        cnt = 0\n        for i in range(n):\n            for j in range(m):\n                if grid[i][j] == 1 and vis[i][j] == 0:\n                    cnt += 1\n        return cnt\nif __name__ == '__main__':\n    grid = [\n        [0, 0, 0, 0],\n        [1, 0, 1, 0],\n        [0, 1, 1, 0],\n        [0, 0, 0, 0]\n    ]\n    obj = Solution()\n    print(obj.numberOfEnclaves(grid))",
+  "cyclomaticComplexity": 5,
+  "linesOfCode": 32,
+  "timeComplexity": "O(m*n)",
+  "spaceComplexity": "O(m*n)"
+},
+{
+  "_id": {
+    "$oid": "67373112ddc600755a8c4037"
+  },
+  "name": "Q12_Climbing Stairs",
+  "code": "def main():\n    n = 3  \n    prev2 = 1  \n    prev = 1    \n    for i in range(2, n+1):\n        cur_i = prev2 + prev  \n        prev2 = prev          \n        prev = cur_i          \n    print(prev)  \nif __name__ == '__main__':\n    main()",
+  "cyclomaticComplexity": 2,
+  "linesOfCode": 14,
+  "timeComplexity": "O(n)",
+  "spaceComplexity": "O(1)"
+},
+{
+  "_id": {
+    "$oid": "67373112ddc600755a8c4038"
+  },
+  "name": "Q13_House Robber",
+  "code": "def solve(arr):\n    n = len(arr)\n    prev = arr[0]  \n    prev2 = 0      \n    for i in range(1, n):\n        pick = arr[i] + (prev2 if i > 1 else 0)  \n        nonPick = prev  \n        cur_i = max(pick, nonPick)  \n        prev2 = prev  \n        prev = cur_i  \n    return prev\n\ndef robStreet(n, arr):\n    arr1 = arr[:-1]  \n    arr2 = arr[1:]   \n    if n == 1:\n        return arr[0]\n    ans1 = solve(arr1)\n    ans2 = solve(arr2)\n    return max(ans1, ans2)\n\ndef main():\n    arr = [1, 5, 1, 2, 6]\n    n = len(arr)\n    print(robStreet(n, arr))\nif __name__ == '__main__':\n    main()",
+  "cyclomaticComplexity": 4,
+  "linesOfCode": 24,
+  "timeComplexity": "O(n)",
+  "spaceComplexity": "O(1)"
+},
+{
+  "_id": {
+    "$oid": "67373112ddc600755a8c4039"
+  },
+  "name": "Q14_Grid Unique Paths",
+  "code": "def countWays(m, n):\n    prev = [0] * n\n    for i in range(m):\n        temp = [0] * n\n        for j in range(n):\n            if i == 0 and j == 0:\n                temp[j] = 1\n                continue\n            up = 0\n            left = 0\n            if i > 0:\n                up = prev[j]\n            if j > 0:\n                left = temp[j - 1]\n            temp[j] = up + left\n        prev = temp\n    return prev[n - 1]\n\ndef main():\n    m = 3\n    n = 2\n    print(countWays(m, n))\nif __name__ == '__main__':\n    main()",
+  "cyclomaticComplexity": 6,
+  "linesOfCode": 23,
+  "timeComplexity": "O(n*m)",
+  "spaceComplexity": "O(n)"
+},
+{
+  "_id": {
+    "$oid": "67373112ddc600755a8c403a"
+  },
+  "name": "Q15_Count frequency of each element in the array",
+  "code": "def Frequency(arr, n):\n    mp = {}\n    for i in range(n):\n        if arr[i] in mp:\n            mp[arr[i]] += 1\n        else:\n            mp[arr[i]] = 1\n    for x in mp:\n        print(x, mp[x])\nif __name__ == '__main__':\n    arr = [10, 5, 10, 15, 10, 5]\n    n = len(arr)\n    Frequency(arr, n)",
+  "cyclomaticComplexity": 4,
+  "linesOfCode": 13,
+  "timeComplexity": "O(n)",
+  "spaceComplexity": "O(n)"
+},
+{
+  "_id": {
+    "$oid": "67373112ddc600755a8c403b"
+  },
+  "name": "Q16_Find the missing number in an array",
+  "code": "def missingNumber(a, N):\n    xor1 = 0\n    xor2 = 0\n    for i in range(N - 1):\n        xor2 = xor2 ^ a[i]  \n        xor1 = xor1 ^ (i + 1)  \n    xor1 = xor1 ^ N  \n    return xor1 ^ xor2  \ndef main():\n    N = 5\n    a = [1, 2, 4, 5]\n    ans = missingNumber(a, N)\n    print('The missing number is:', ans)\nif __name__ == '__main__':\n    main()",
+  "cyclomaticComplexity": 2,
+  "linesOfCode": 15,
+  "timeComplexity": "O(n)",
+  "spaceComplexity": "O(1)"
+},
+{
+  "_id": {
+    "$oid": "67373112ddc600755a8c403c"
+  },
+  "name": "Q17_Maximum Subarray Sum in an Array",
+  "code": "import sys\ndef maxSubarraySum(arr, n):\n    maxi = -sys.maxsize-1  \nsum = 0\n    for i in range(n):\n        sum += arr[i]\n        if sum > maxi:\n            maxi = sum\n        if sum < 0:\n            sum = 0\n    return maxi\narr = [-2, 1, -3, 4, -1, 2, 1, -5, 4]\nn = len(arr)\nmaxSum = maxSubarraySum(arr, n)\nprint('The maximum subarray sum is:', maxSum)",
+  "cyclomaticComplexity": 4,
+  "linesOfCode": 15,
+  "timeComplexity": "O(n)",
+  "spaceComplexity": "O(1)"
+},
+{
+  "_id": {
+    "$oid": "67373112ddc600755a8c403d"
+  },
+  "name": "Q18_Count Maximum Consecutive One's in the array",
+  "code": "from typing import List\nclass Solution:\n    def findMaxConsecutiveOnes(self, nums: List[int]) -> int:\n        cnt = 0  \n        maxi = 0  \n        for num in nums:\n            if num == 1:\n                cnt += 1\n            else:\n                cnt = 0\n            maxi = max(maxi, cnt)\n        return maxi\nif __name__ == '__main__':\n    nums = [1, 1, 0, 1, 1, 1]\n    obj = Solution()\n    ans = obj.findMaxConsecutiveOnes(nums)\n    print('The maximum consecutive 1's are', ans)",
+  "cyclomaticComplexity": 3,
+  "linesOfCode": 17,
+  "timeComplexity": "O(n)",
+  "spaceComplexity": "O(1)"
+},
+{
+  "_id": {
+    "$oid": "67373112ddc600755a8c403e"
+  },
+  "name": "Q19_Check if two Strings are anagrams of each other",
+  "code": "def check_anagrams(str1: str, str2: str) -> bool:\n    if len(str1) != len(str2):\n        return False\n    str1_sorted = sorted(str1)\n    str2_sorted = sorted(str2)\n    return str1_sorted == str2_sorted\n\ndef main():\n    str1 = 'INTEGER'\n    str2 = 'TEGERNI'\n    if check_anagrams(str1, str2):\n        print('True')\n    else:\n        print('False')\nif __name__ == '__main__':\n    main()",
+  "cyclomaticComplexity": 2,
+  "linesOfCode": 15,
+  "timeComplexity": "O(nlogn)",
+  "spaceComplexity": "O(n)"
+},
+{
+  "_id": {
+    "$oid": "67373112ddc600755a8c403f"
+  },
+  "name": "Q20_Implement Pow(x,n)",
+  "code": "def myPow(x: float, n: int) -> float:\n    ans = 1.0\n    nn = n\n    if nn < 0:\n        nn = -nn  \n    while nn:\n        if nn % 2:\n            ans *= x  \n            nn -= 1\n        else:\n            x *= x  \n            nn //= 2  \n    if n < 0:\n        ans = 1.0 / ans  \n    return ans\nif __name__ == '__main__':\n    print(myPow(2, 10))",
+  "cyclomaticComplexity": 5,
+  "linesOfCode": 17,
+  "timeComplexity": "O(logn)",
+  "spaceComplexity": "O(1)"
+},
+{
+  "_id": {
+    "$oid": "67373527ddc600755a8c4041"
+  },
+  "name": "Q21_Dubstep",
+  "code": "def sample_function(x):\n    a2 = x.replace('WUB', ' ')\n    print(a2)\n\nsample_function(input())",
+  "cyclomaticComplexity": 1,
+  "linesOfCode": 4,
+  "timeComplexity": "O(n)",
+  "spaceComplexity": "O(n)"
+},
+{
+  "_id": {
+    "$oid": "67373527ddc600755a8c4042"
+  },
+  "name": "Q22_Burenka Plays with Fractions",
+  "code": "def solve():\n    a, b, c, d = map(int, input().split())\n\n    x = a * d\n    y = b * c\n\n    if x == y:\n        print(0)\n    elif (y != 0 and x % y == 0) or (x != 0 and y % x == 0):\n        print(1)\n    else:\n        print(2)\n\ndef main():\n    T = int(input())\n    for _ in range(T):\n        solve()\n\nif __name__ == '__main__':\n    main()",
+  "cyclomaticComplexity": 3,
+  "linesOfCode": 16,
+  "timeComplexity": "O(1)",
+  "spaceComplexity": "O(1)"
+},
+{
+  "_id": {
+    "$oid": "67373527ddc600755a8c4043"
+  },
+  "name": "Q23_Postcards and photos",
+  "code": "def main():\n    s = input().strip()\n    result = 0\n    count = 1\n\n    for i in range(1, len(s)):\n        if s[i] == s[i - 1]:\n            count += 1\n        else:\n            result += (count + 4) // 5\n            count = 1\n\n    result += (count + 4) // 5\n    print(result)\n\nif __name__ == '__main__':\n    main()",
+  "cyclomaticComplexity": 3,
+  "linesOfCode": 14,
+  "timeComplexity": "O(n)",
+  "spaceComplexity": "O(1)"
+},
+{
+  "_id": {
+    "$oid": "67373527ddc600755a8c4044"
+  },
+  "name": "Q24_Football",
+  "code": "def main():\n    s1 = input().strip()\n    condition = 1\n\n    for i in range(1, len(s1)):\n        if s1[i] == s1[i - 1]:\n            condition += 1\n            if condition == 7:\n                print('YES')\n                return\n        else:\n            condition = 1\n\n    print('NO')\n\nif __name__ == '__main__':\n    main()",
+  "cyclomaticComplexity": 4,
+  "linesOfCode": 14,
+  "timeComplexity": "O(n)",
+  "spaceComplexity": "O(1)"
+},
+{
+  "_id": {
+    "$oid": "67373527ddc600755a8c4045"
+  },
+  "name": "Q25_Start Up",
+  "code": "def main():\n    s = input().strip()\n    n = len(s)\n    flag = False\n    check = True\n    for char in s:\n        if char not in {'A', 'H', 'I', 'M', 'O', 'T', 'U', 'V', 'W', 'X', 'Y'}:\n            check = False\n            break\n    if check:\n        t = s[::-1]\n        flag = (s == t)\n    if flag:\n        print('YES')\n    else:\n        print('NO')\n\nif __name__ == '__main__':\n    main()",
+  "cyclomaticComplexity": 5,
+  "linesOfCode": 18,
+  "timeComplexity": "O(n)",
+  "spaceComplexity": "O(n)"
+},
+{
+  "_id": {
+    "$oid": "67373527ddc600755a8c4046"
+  },
+  "name": "Q26_Select Three Sticks",
+  "code": "import sys\ninput = sys.stdin.read\n\ndef main():\n    data = input().split()\n    t = int(data[0])\n    idx = 1\n    \n    results = []\n    for _ in range(t):\n        n = int(data[idx])\n        idx += 1\n        a = list(map(int, data[idx:idx + n]))\n        idx += n\n        \n        a.sort()\n        ans = float('inf')\n        \n        for i in range(2, n):\n            ans = min(ans, a[i] - a[i - 2])\n        \n        results.append(ans)\n    \n    print('\\n'.join(map(str, results)))\n\nif __name__ == '__main__':\n    main()",
+  "cyclomaticComplexity": 3,
+  "linesOfCode": 20,
+  "timeComplexity": "O(n log n)",
+  "spaceComplexity": "O(n)"
+},
+{
+  "_id": {
+    "$oid": "67373527ddc600755a8c4047"
+  },
+  "name": "Q27_Young Physicist",
+  "code": "def main():\n    n = int(input().strip())\n    x = []\n    y = []\n    z = []\n    for _ in range(n):\n        xi, yi, zi = map(int, input().split())\n        x.append(xi)\n        y.append(yi)\n        z.append(zi)\n    sum1 = sum(x)\n    sum2 = sum(y)\n    sum3 = sum(z)\n    if sum1 == 0 and sum2 == 0 and sum3 == 0:\n        print('YES')\n    else:\n        print('NO')\n\nif __name__ == '__main__':\n    main()",
+  "cyclomaticComplexity": 3,
+  "linesOfCode": 19,
+  "timeComplexity": "O(n)",
+  "spaceComplexity": "O(n)"
+},
+{
+  "_id": {
+    "$oid": "67373527ddc600755a8c4048"
+  },
+  "name": "Q28_Word",
+  "code": "def main():\n    s = input().strip()\n    countup = sum(1 for char in s if char.isupper())\n    countlow = len(s) - countup  \n    if countup > countlow:\n        print(s.upper())\n    else:\n        print(s.lower())\n\nif __name__ == '__main__':\n    main()",
+  "cyclomaticComplexity": 2,
+  "linesOfCode": 10,
+  "timeComplexity": "O(n)",
+  "spaceComplexity": "O(1)"
+},
+{
+  "_id": {
+    "$oid": "67373527ddc600755a8c4049"
+  },
+  "name": "Q29_Increasing",
+  "code": "def main():\n    t = int(input().strip())  \n    for _ in range(t):\n        n = int(input().strip())  \n        arr = set()  \n        duplicate_found = False\n        for _ in range(n):\n            inp = int(input().strip())  \n            if not duplicate_found:\n                if inp not in arr:\n                    arr.add(inp)  \n                else:\n                    duplicate_found = True  \n        print('NO' if duplicate_found else 'YES')\n\nif __name__ == '__main__':\n    main()",
+  "cyclomaticComplexity": 5,
+  "linesOfCode": 16,
+  "timeComplexity": "O(n)",
+  "spaceComplexity": "O(n)"
+},
+{
+  "_id": {
+    "$oid": "67373527ddc600755a8c404a"
+  },
+  "name": "Q30_Garland",
+  "code": "def main():\n    t = int(input().strip())\n    for _ in range(t):\n        s = input().strip()\n        char_count = {}\n        for char in s:\n            char_count[char] = char_count.get(char, 0) + 1\n        if len(char_count) >= 3:\n            print(4)\n        elif len(char_count) == 2 and any(count == 2 for count in char_count.values()):\n            print(4)\n        elif len(char_count) == 2:\n            print(6)\n        else:\n            print(-1)\n\nif __name__ == '__main__':\n    main()",
+  "cyclomaticComplexity": 6,
+  "linesOfCode": 17,
+  "timeComplexity": "O(n*k)",
+  "spaceComplexity": "O(n*k)"
+},
+{
+  "_id": {
+    "$oid": "67373527ddc600755a8c404b"
+  },
+  "name": "Q31_Wallet Exchange",
+  "code": "def main():\n    t = int(input().strip())\n    for _ in range(t):\n        a, b = map(int, input().split())\n        if (a + b) % 2 == 0:\n            print('Bob')\n        else:\n            print('Alice')\n\nif __name__ == '__main__':\n    main()",
+  "cyclomaticComplexity": 3,
+  "linesOfCode": 15,
+  "timeComplexity": "O(n)",
+  "spaceComplexity": "O(n)"
+},
+{
+  "_id": {
+    "$oid": "67373527ddc600755a8c404c"
+  },
+  "name": "Q32_Is It a Cat?",
+  "code": "def main():\n    t = int(input().strip())\n    for _ in range(t):\n        s = input().strip()\n        n = len(s)\n        idx = n - 1\n        found = False\n        while idx >= 0:\n            if s[idx] == '1':\n                print(n - idx)\n                found = True\n                break\n            idx -= 1\n        if not found:\n            print(0)\n\nif __name__ == '__main__':\n    main()",
+  "cyclomaticComplexity": 4,
+  "linesOfCode": 15,
+  "timeComplexity": "O(n)",
+  "spaceComplexity": "O(1)"
+},
+{
+  "_id": {
+    "$oid": "67373527ddc600755a8c404d"
+  },
+  "name": "Q33_Buy and Sell Stock - III",
+  "code": "def main():\n    n = int(input().strip())\n    arr = list(map(int, input().split()))\n    arr.sort(reverse=True)\n    i = 0\n    ans = 0\n    while i < n and arr[i] > i + 1:\n        ans += 1\n        i += 1\n    print(ans)\n\nif __name__ == '__main__':\n    main()",
+  "cyclomaticComplexity": 4,
+  "linesOfCode": 12,
+  "timeComplexity": "O(n log n)",
+  "spaceComplexity": "O(n)"
+},
+{
+  "_id": {
+    "$oid": "67373527ddc600755a8c404e"
+  },
+  "name": "Q34_Buy and Sell Stocks With Transaction Fees",
+  "code": "def main():\n    a, b, c = map(int, input().split())\n    sum1 = a + b + c\n    if sum1 % 3 == 0:\n        print('YES')\n    else:\n        print('NO')\n\nif __name__ == '__main__':\n    main()",
+  "cyclomaticComplexity": 2,
+  "linesOfCode": 6,
+  "timeComplexity": "O(1)",
+  "spaceComplexity": "O(1)"
+},
+{
+  "_id": {
+    "$oid": "6737356eddc600755a8c4050"
+  },
+  "name": "Q35_Choosing Cubes",
+  "code": "def main():\n    t = int(input())\n    for _ in range(t):\n        n, f, k = map(int, input().split())\n        cubes = list(map(int, input().split()))\n        fav = cubes[f - 1]\n        cubes.sort(reverse=True)\n        a, b = True, True\n        for i in range(k):\n            if cubes[i] == fav:\n                b = False\n        for i in range(k, n):\n            if cubes[i] == fav:\n                a = False\n        if a:\n            print(\"YES\")\n        elif b:\n            print(\"NO\")\n        else:\n            print(\"MAYBE\")\n\nif __name__ == \"__main__\":\n    main()",
+  "cyclomaticComplexity": 4,
+  "linesOfCode": 21,
+  "timeComplexity": "O(n*m)",
+  "spaceComplexity": "O(1)"
+},
+{
+  "_id": {
+    "$oid": "6737356eddc600755a8c4051"
+  },
+  "name": "Q36_Array Cloning Technique",
+  "code": "def main():\n    t = int(input())\n    for _ in range(t):\n        res = 0\n        n = int(input())\n        arr = list(map(int, input().split()))\n        count_map = {}\n        for num in arr:\n            count_map[num] = count_map.get(num, 0) + 1\n        ans = max(count_map.values())\n        while ans < n:\n            if 2 * ans > n:\n                res += 1 + (n - ans)\n                ans = n\n            else:\n                res += 1 + ans\n                ans *= 2\n        print(res)\n\nif __name__ == \"__main__\":\n    main()",
+  "cyclomaticComplexity": 2,
+  "linesOfCode": 12,
+  "timeComplexity": "O(n)",
+  "spaceComplexity": "O(1)"
+},
+{
+  "_id": {
+    "$oid": "6737356eddc600755a8c4052"
+  },
+  "name": "Q37_Swap and Delete",
+  "code": "def main():\n    t = int(input())\n    for _ in range(t):\n        s = input()\n        cnt = [0, 0]\n        for c in s:\n            cnt[int(c)] += 1\n        for i in range(len(s) + 1):\n            if i == len(s) or cnt[1 - int(s[i])] == 0:\n                print(len(s) - i)\n                break\n            cnt[1 - int(s[i])] -= 1\n\nif __name__ == \"__main__\":\n    main()",
+  "cyclomaticComplexity": 6,
+  "linesOfCode": 17,
+  "timeComplexity": "O(n*m)",
+  "spaceComplexity": "O(n)"
+},
+{
+  "_id": {
+    "$oid": "6737356eddc600755a8c4053"
+  },
+  "name": "Q38_Lamps",
+  "code": "def cmp(a, b):\n    if a[0] != b[0]:\n        return a[0] - b[0]\n    return b[1] - a[1]\n\ndef main():\n    t = int(input())\n    for _ in range(t):\n        n = int(input())\n        v = [tuple(map(int, input().split())) for _ in range(n)]\n        v.sort(key=lambda x: (x[0], -x[1]))\n        idx, cnt, total = 0, 0, 0\n        for p in range(n):\n            if p < idx:\n                continue\n            total += v[p][1]\n            cnt += 1\n            while idx < n and v[idx][0] <= cnt:\n                idx += 1\n            cnt = p - idx + 1\n            cnt = max(cnt, 0)\n        print(total)\n\nif __name__ == \"__main__\":\n    main()",
+  "cyclomaticComplexity": 3,
+  "linesOfCode": 11,
+  "timeComplexity": "O(n*k)",
+  "spaceComplexity": "O(n*k)"
+},
+{
+  "_id": {
+    "$oid": "6737356eddc600755a8c4054"
+  },
+  "name": "Q39_Binary Cafe",
+  "code": "class Job:\n    def __init__(self, id, deadline, profit):\n        self.id = id\n        self.deadline = deadline\n        self.profit = profit\n\nclass Solution:\n    def jobScheduling(self, jobs):\n        jobs.sort(key=lambda x: x.profit, reverse=True)\n        maxi = jobs[0].deadline\n        for i in range(1, len(jobs)):\n            maxi = max(maxi, jobs[i].deadline)\n        slot = [-1] * (maxi + 1)\n        countJobs = 0\n        jobProfit = 0\n        for i in range(len(jobs)):\n            for j in range(jobs[i].deadline, 0, -1):\n                if slot[j] == -1:\n                    slot[j] = i\n                    countJobs += 1\n                    jobProfit += jobs[i].profit\n                    break\n        return countJobs, jobProfit\n\nif __name__ == \"__main__\":\n    jobs = [Job(1, 4, 20), Job(2, 1, 10), Job(3, 2, 40), Job(4, 2, 30)]\n    count, profit = Solution().jobScheduling(jobs)\n    print(count, profit)",
+  "cyclomaticComplexity": 2,
+  "linesOfCode": 18,
+  "timeComplexity": "O(n)",
+  "spaceComplexity": "O(1)"
+},
+{
+  "_id": {
+    "$oid": "6737356eddc600755a8c4055"
+  },
+  "name": "Q40_All are Same",
+  "code": "from typing import List\n\ndef nextGreaterPermutation(A: List[int]) -> List[int]:\n    n = len(A)\n    ind = -1\n    for i in range(n-2, -1, -1):\n        if A[i] < A[i + 1]:\n            ind = i\n            break\n    if ind == -1:\n        A.reverse()\n        return A\n    for i in range(n - 1, ind, -1):\n        if A[i] > A[ind]:\n            A[i], A[ind] = A[ind], A[i]\n            break\n    A[ind+1:] = reversed(A[ind+1:])\n    return A\n\nif __name__ == \"__main__\":\n    A = [2, 1, 5, 4, 3, 0, 0]\n    ans = nextGreaterPermutation(A)\n    print(\"The next permutation is: [\", end=\"\")\n    for it in ans:\n        print(it, end=\" \")\n    print(\"]\")",
+  "cyclomaticComplexity": 1,
+  "linesOfCode": 4,
+  "timeComplexity": "O(n)",
+  "spaceComplexity": "O(n)"
+},
+{
+  "_id": {
+    "$oid": "673bb06b462d6baeea7e74ef"
+  },
+  "name": "Q1_StartUp",
+  "code": "#include <bits/stdc++.h>\nusing namespace std;\n\nvoid solve() {\n  int n, k;\n  cin >> n >> k;\n  vector<int> brand_cost(k, 0);\n  for (int i = 0; i < k; i++) {\n    int b, c;\n    cin >> b >> c;\n    brand_cost[b - 1] += c;\n  }\n  sort(brand_cost.rbegin(), brand_cost.rend());\n  long long ans = 0;\n  for (int i = 0; i < min(n, k); i++) {\n    ans += brand_cost[i];\n  }\n  cout << ans << '\\n';\n}\n\nint main() {\n  int t;\n  cin >> t;\n  while (t--) {\n    solve();\n  }\n  return 0;\n}",
+  "cyclomaticComplexity": 6,
+  "linesOfCode": 26,
+  "timeComplexity": "O(klogk)",
+  "spaceComplexity": "O(k)"
+}]
